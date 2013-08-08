@@ -1,0 +1,12 @@
+.page.page-event-details, .page.page-notifications, .page.page-edit {
+  border-left: 1px solid #888888; }
+
+ul.months-list .element > div.element-container, ul.weeks-list .element > div.element-container, .page-event-details .element > div.element-container {
+  border: 1px solid #dddddd; }
+
+.page.page-event-details div.content .element > div.element-container {
+  border-bottom: 0; }
+.page.page-event-details div.content .event > ul.comments {
+  margin: 0 8px 50px 8px;
+  border: 1px solid #dddddd;
+  border-top: 0; }

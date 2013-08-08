@@ -1,0 +1,16 @@
+.page.page-calendar > header > div.line > span.title {
+  margin-left: 20px; }
+.page.page-calendar > header .weekdays {
+  position: absolute;
+  left: 0;
+  bottom: 8px;
+  width: 100%; }
+  .page.page-calendar > header .weekdays ul.row {
+    font-size: 12px;
+    margin: 0 30px 0 30px;
+    overflow: auto; }
+    .page.page-calendar > header .weekdays ul.row > li {
+      width: 14.28571%;
+      float: left; }
+      .page.page-calendar > header .weekdays ul.row > li > span {
+        margin: 0 0 0 7px; }

@@ -1,0 +1,55 @@
+.notifications-view .settings-items, .general-view .settings-items {
+  margin: 90px 0 70px 0; }
+
+.settings-items {
+  margin: 90px 0 0 0; }
+  .settings-items > li.settings-item {
+    font-size: 15px;
+    margin: 22px 0 0 0; }
+    .settings-items > li.settings-item:first-child {
+      margin-top: 0; }
+    .settings-items > li.settings-item > div.header {
+      min-height: 23px; }
+      .settings-items > li.settings-item > div.header span {
+        font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+        color: #525044;
+        margin: 0 10px 0 0; }
+      .settings-items > li.settings-item > div.header em {
+        font-style: normal;
+        color: #807e73; }
+      .settings-items > li.settings-item > div.header .badge {
+        visibility: hidden;
+        margin: 0 0 0 10px; }
+      .settings-items > li.settings-item > div.header.changed .badge {
+        visibility: visible; }
+    .settings-items > li.settings-item > div.item-content {
+      margin: 13px 0 0 0; }
+      .settings-items > li.settings-item > div.item-content > div.input-wrapper {
+        background: white;
+        border-radius: 1px;
+        box-shadow: 0 1px 0 #d9d6c6;
+        padding: 10px; }
+        .settings-items > li.settings-item > div.item-content > div.input-wrapper > input, .settings-items > li.settings-item > div.item-content > div.input-wrapper > select {
+          font-size: 15px;
+          color: #525044;
+          width: 100%; }
+
+ul.options-group {
+  overflow: auto; }
+  ul.options-group > li.option {
+    display: block;
+    float: left;
+    margin: 0 0 0 30px;
+    padding: 8px 10px;
+    border: 1px solid #807e73;
+    border-radius: 2px;
+    font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+    color: #807e73;
+    width: 80px;
+    cursor: pointer; }
+    ul.options-group > li.option.selected {
+      color: white;
+      border-color: #007550;
+      background: #007550; }
+    ul.options-group > li.option:first-child {
+      margin-left: 0; }

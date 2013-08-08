@@ -1,0 +1,30 @@
+.page.page-event-details div.content .event {
+  margin-top: 0; }
+  .page.page-event-details div.content .event .element-container > div.buttons > div.button-element.single {
+    width: 100%; }
+  .page.page-event-details div.content .event .element-container > div.info > h2 {
+    width: 340px; }
+  .page.page-event-details div.content .event > ul.comments {
+    margin: 0 8px 50px 8px;
+    box-shadow: 0 1px 2px #cccccc, 0 0 0 #999999; }
+    .page.page-event-details div.content .event > ul.comments > li.comment {
+      background: #f0efec;
+      padding: 9px 15px;
+      border-top: 1px solid #cccccc;
+      position: relative; }
+      .page.page-event-details div.content .event > ul.comments > li.comment > h2 {
+        font: normal 12px OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif; }
+        .page.page-event-details div.content .event > ul.comments > li.comment > h2 > span {
+          color: #807e73; }
+        .page.page-event-details div.content .event > ul.comments > li.comment > h2 > em {
+          font: normal 12px OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+          font-style: normal;
+          color: #999999;
+          margin: 0 0 0 5px; }
+      .page.page-event-details div.content .event > ul.comments > li.comment > p.message {
+        font: normal 12px OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+        margin: 7px 0 0 0; }
+      .page.page-event-details div.content .event > ul.comments > li.comment > p.time {
+        font: normal 11px OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+        margin: 8px 0 0 0;
+        color: #807e73; }

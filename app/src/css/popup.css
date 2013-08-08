@@ -1,0 +1,85 @@
+.popup-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  background: #333333;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"; }
+  .popup-overlay.enter {
+    -webkit-animation: popup-overlay-enter 200ms ease-out 0s;
+    -moz-animation: popup-overlay-enter 200ms ease-out 0s;
+    -ms-animation: popup-overlay-enter 200ms ease-out 0s;
+    -o-animation: popup-overlay-enter 200ms ease-out 0s;
+    animation: popup-overlay-enter 200ms ease-out 0s; }
+  .popup-overlay.exit {
+    -webkit-animation: popup-overlay-exit 200ms ease-in 0s;
+    -moz-animation: popup-overlay-exit 200ms ease-in 0s;
+    -ms-animation: popup-overlay-exit 200ms ease-in 0s;
+    -o-animation: popup-overlay-exit 200ms ease-in 0s;
+    animation: popup-overlay-exit 200ms ease-in 0s; }
+
+.popup {
+  width: 410px;
+  background: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 100000;
+  margin: 0 0 0 -241px;
+  padding: 36px 36px 98px 36px;
+  border-radius: 2px; }
+  .popup.no-bottom-bar {
+    padding: 36px; }
+  .popup.enter {
+    -webkit-animation: popup-enter 200ms ease-out 0s;
+    -moz-animation: popup-enter 200ms ease-out 0s;
+    -ms-animation: popup-enter 200ms ease-out 0s;
+    -o-animation: popup-enter 200ms ease-out 0s;
+    animation: popup-enter 200ms ease-out 0s; }
+  .popup.exit {
+    -webkit-animation: popup-exit 200ms ease-in 0s;
+    -moz-animation: popup-exit 200ms ease-in 0s;
+    -ms-animation: popup-exit 200ms ease-in 0s;
+    -o-animation: popup-exit 200ms ease-in 0s;
+    animation: popup-exit 200ms ease-in 0s; }
+  .popup > h1, .popup > div.close {
+    color: white;
+    font: normal 17px OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif; }
+  .popup > h1 {
+    position: absolute;
+    top: -70px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2); }
+  .popup > div.close {
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer; }
+  .popup > div.button {
+    width: 200px; }
+  .popup div.button {
+    padding: 11px; }
+  .popup > div.buttons-container {
+    text-align: center;
+    position: absolute;
+    background: #f9f9f9;
+    border-top: 2px solid whitesmoke;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 9px 0; }
+    .popup > div.buttons-container > div.button {
+      margin: 0 9px;
+      min-width: 130px;
+      display: inline-block; }
+  .popup div.button {
+    margin: 10px auto 0 auto;
+    display: block; }

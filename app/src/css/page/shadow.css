@@ -1,0 +1,10 @@
+.shadow {
+  position: absolute;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  z-index: 1;
+  background: #807e73;
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  display: none; }

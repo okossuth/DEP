@@ -1,0 +1,22 @@
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0 0 0 261px;
+  min-height: 600px; }
+  .page.post-animation.prev-page {
+    display: none; }
+  .page.enter {
+    -webkit-animation: page-enter 200ms ease-out 0s;
+    -moz-animation: page-enter 200ms ease-out 0s;
+    -ms-animation: page-enter 200ms ease-out 0s;
+    -o-animation: page-enter 200ms ease-out 0s;
+    animation: page-enter 200ms ease-out 0s; }
+  .page.exit {
+    -webkit-animation: page-exit 200ms ease-out 0s;
+    -moz-animation: page-exit 200ms ease-out 0s;
+    -ms-animation: page-exit 200ms ease-out 0s;
+    -o-animation: page-exit 200ms ease-out 0s;
+    animation: page-exit 200ms ease-out 0s; }

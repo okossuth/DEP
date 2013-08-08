@@ -1,0 +1,35 @@
+body.highlight-events ul.months-list > li table.days-container .week-row > .cell .element.event, body.highlight-events ul.weeks-list > li table.days-container .week-row > .cell .element.event {
+  position: static; }
+body.highlight-events ul.months-list > li table.days-container .week-row > .cell > div, body.highlight-events ul.weeks-list > li table.days-container .week-row > .cell > div {
+  position: static; }
+  body.highlight-events ul.months-list > li table.days-container .week-row > .cell > div > strong.week-number, body.highlight-events ul.weeks-list > li table.days-container .week-row > .cell > div > strong.week-number {
+    display: none; }
+body.highlight-events.highlight-events.open .page-calendar .element-container.open {
+  z-index: 100000;
+  position: relative;
+  -webkit-animation: highlight-events 6000ms ease-out 0s infinite;
+  -moz-animation: highlight-events 6000ms ease-out 0s infinite;
+  -ms-animation: highlight-events 6000ms ease-out 0s infinite;
+  -o-animation: highlight-events 6000ms ease-out 0s infinite;
+  animation: highlight-events 6000ms ease-out 0s infinite; }
+body.highlight-events.highlight-events.open-responses .page-calendar .element-container.open-responses {
+  z-index: 100000;
+  position: relative;
+  -webkit-animation: highlight-events 6000ms ease-out 0s infinite;
+  -moz-animation: highlight-events 6000ms ease-out 0s infinite;
+  -ms-animation: highlight-events 6000ms ease-out 0s infinite;
+  -o-animation: highlight-events 6000ms ease-out 0s infinite;
+  animation: highlight-events 6000ms ease-out 0s infinite; }
+body.highlight-events.highlight-events.closed .page-calendar .element-container.closed {
+  z-index: 100000;
+  position: relative;
+  -webkit-animation: highlight-events 6000ms ease-out 0s infinite;
+  -moz-animation: highlight-events 6000ms ease-out 0s infinite;
+  -ms-animation: highlight-events 6000ms ease-out 0s infinite;
+  -o-animation: highlight-events 6000ms ease-out 0s infinite;
+  animation: highlight-events 6000ms ease-out 0s infinite; }
+body.highlight-events .page > header, body.highlight-events .page > footer {
+  z-index: auto; }
+  body.highlight-events .page > header > div.line > ul.switcher-events-filter, body.highlight-events .page > footer > div.line > ul.switcher-events-filter {
+    z-index: 100000;
+    position: relative; }

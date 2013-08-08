@@ -1,0 +1,14 @@
+.side-bar ul.menu {
+  margin: 16px 0 0 0; }
+  .side-bar ul.menu > li {
+    display: block;
+    padding: 11px 0 11px 29px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #cccccc; }
+    .side-bar ul.menu > li.selected {
+      font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+      color: #fd5308; }
+    .side-bar ul.menu > li > a {
+      color: inherit;
+      text-decoration: none; }

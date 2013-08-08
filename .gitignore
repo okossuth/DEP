@@ -14,3 +14,10 @@ node_modules
 /app/app_*.html
 
 /app/dist/*
+
+
+!/app/src/css/*
+!/app/src/js/*
+!/app/app.html
+!/app/app_*.html
+!/app/dist/*

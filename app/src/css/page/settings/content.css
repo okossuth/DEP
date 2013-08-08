@@ -1,0 +1,69 @@
+.page.page-settings.scrolled-bottom .shadow.bottom {
+  display: block; }
+
+.page.page-settings.scrolled-top .shadow.top {
+  display: block; }
+
+.page.page-settings .content.notifications-view > .shadow.bottom, .page.page-settings .content.general-view > .shadow.bottom {
+  bottom: 70px; }
+
+.page.page-settings .content {
+  margin: 135px 40px 40px 40px;
+  overflow-x: hidden; }
+  .page.page-settings .content.enter {
+    -webkit-animation: empty-enter 200ms ease-out 0s;
+    -moz-animation: empty-enter 200ms ease-out 0s;
+    -ms-animation: empty-enter 200ms ease-out 0s;
+    -o-animation: empty-enter 200ms ease-out 0s;
+    animation: empty-enter 200ms ease-out 0s; }
+    .page.page-settings .content.enter > .apply-animation {
+      -webkit-animation: sub-page-enter 200ms ease-out 0s;
+      -moz-animation: sub-page-enter 200ms ease-out 0s;
+      -ms-animation: sub-page-enter 200ms ease-out 0s;
+      -o-animation: sub-page-enter 200ms ease-out 0s;
+      animation: sub-page-enter 200ms ease-out 0s; }
+  .page.page-settings .content.exit {
+    -webkit-animation: empty-exit 200ms ease-out 0s;
+    -moz-animation: empty-exit 200ms ease-out 0s;
+    -ms-animation: empty-exit 200ms ease-out 0s;
+    -o-animation: empty-exit 200ms ease-out 0s;
+    animation: empty-exit 200ms ease-out 0s; }
+    .page.page-settings .content.exit > .apply-animation {
+      -webkit-animation: sub-page-exit 200ms ease-out 0s;
+      -moz-animation: sub-page-exit 200ms ease-out 0s;
+      -ms-animation: sub-page-exit 200ms ease-out 0s;
+      -o-animation: sub-page-exit 200ms ease-out 0s;
+      animation: sub-page-exit 200ms ease-out 0s; }
+  .page.page-settings .content > .shadow.bottom {
+    bottom: 0; }
+  .page.page-settings .content > .shadow.top {
+    top: 90px; }
+  .page.page-settings .content > .line {
+    overflow: visible;
+    height: 40px; }
+    .page.page-settings .content > .line > * {
+      vertical-align: middle; }
+    .page.page-settings .content > .line > div.placeholder {
+      height: 40px;
+      width: 1px;
+      display: inline-block;
+      margin: 0 0 0 0; }
+  .page.page-settings .content h2.title {
+    color: #807e73;
+    font-weight: normal;
+    font-size: 21px;
+    display: inline-block;
+    margin: 0 30px 0 0; }
+  .page.page-settings .content > div.info {
+    margin: 40px 0 0 0; }
+    .page.page-settings .content > div.info > h2, .page.page-settings .content > div.info > h3 {
+      text-align: center;
+      font-weight: normal; }
+    .page.page-settings .content > div.info > h2 {
+      font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+      font-size: 17px;
+      color: #807e73; }
+    .page.page-settings .content > div.info > h3 {
+      margin: 20px 0 0 0;
+      font-size: 15px;
+      color: #807e73; }

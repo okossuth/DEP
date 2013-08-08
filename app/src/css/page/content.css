@@ -1,0 +1,23 @@
+.page > div.content {
+  overflow: auto;
+  position: absolute;
+  margin-top: 95px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #f3f2ec; }
+  .page > div.content.post-animation.prev-page {
+    display: none; }
+  .page > div.content.enter {
+    -webkit-animation: sub-page-enter 200ms ease-out 0s;
+    -moz-animation: sub-page-enter 200ms ease-out 0s;
+    -ms-animation: sub-page-enter 200ms ease-out 0s;
+    -o-animation: sub-page-enter 200ms ease-out 0s;
+    animation: sub-page-enter 200ms ease-out 0s; }
+  .page > div.content.exit {
+    -webkit-animation: sub-page-exit 200ms ease-out 0s;
+    -moz-animation: sub-page-exit 200ms ease-out 0s;
+    -ms-animation: sub-page-exit 200ms ease-out 0s;
+    -o-animation: sub-page-exit 200ms ease-out 0s;
+    animation: sub-page-exit 200ms ease-out 0s; }

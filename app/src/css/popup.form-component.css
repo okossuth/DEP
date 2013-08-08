@@ -1,0 +1,31 @@
+.popup > .settings-items {
+  margin: 0; }
+  .popup > .settings-items > li.settings-item {
+    margin-top: 14px; }
+    .popup > .settings-items > li.settings-item > div.header {
+      text-align: center; }
+      .popup > .settings-items > li.settings-item > div.header > span {
+        color: black;
+        font-size: 14px;
+        margin-right: 0; }
+    .popup > .settings-items > li.settings-item > div.item-content {
+      text-align: center;
+      margin-top: 4px; }
+      .popup > .settings-items > li.settings-item > div.item-content .full-width {
+        width: 100%; }
+      .popup > .settings-items > li.settings-item > div.item-content > input, .popup > .settings-items > li.settings-item > div.item-content > select {
+        background: #edf0f2;
+        border-radius: 2px;
+        font-size: 14px;
+        color: #333333;
+        text-align: center;
+        padding: 2px 0 4px 0;
+        width: 100px; }
+      .popup > .settings-items > li.settings-item > div.item-content > input + span {
+        margin-left: 20px; }
+      .popup > .settings-items > li.settings-item > div.item-content > select {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield; }
+      .popup > .settings-items > li.settings-item > div.item-content > span {
+        color: #333333;
+        margin: 0 10px 0 0; }

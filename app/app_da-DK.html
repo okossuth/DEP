@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<!--<html lang="en" manifest="/app.appcache"> -->
+
+<html lang="en">
+    <head>
+        <script>
+            window._start = new Date()
+        </script>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link href="/dist/style.css" rel="stylesheet" />
+        
+        <title>Ovivo (Tavis->AWS integration test)</title>
+
+        <!--[if lte IE 8]>
+        <script src="/lib/html5shiv.js"></script>
+
+        <link href="/dist/style-ie.css" rel="stylesheet" />
+        <![endif]-->
+     </head>
+
+    <body class="loading loading-running initial-load" style="overflow: hidden;">
+        <!-- <div id="splash" style="background: #f3f2ec; position: absolute; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%;">
+            <div style="width: 160px; height: 30px; margin: 0 auto 0 auto; position: relative; top: 50%;">
+                <div style="position: relative; top: -15px; width: 100%; height: 100%; text-align:center;">
+                    <div id="splash-logo-inner" src="/assets/img/loading-title-100x18.png" style="display: block; margin: 0 auto 5px auto; width: 150px; height: 18px; text-align: center; font: bold 12px 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;">Henter indhold</div>
+                    <img src="/assets/img/ajax-loader.gif" />
+                </div>
+            </div>
+        </div> -->
+
+        <section class="page page-calendar hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button bordered today month-today month-only capital">
+                        <span>I dag</span>
+                    </div>
+
+                    <div class="button bordered today week-today week-only capital">
+                        <span>I dag</span>
+                    </div>
+
+                    <button class="navigation navigate-left">
+                        <i class="icon left inline no-selection"></i>
+                    </button>
+
+                    <button class="navigation navigate-right">
+                        <i class="icon right inline no-selection"></i>
+                    </button>
+
+                    <span class="title week-title week-only"></span>
+                    <span class="title month-title month-only"></span>
+
+                    <div class="button right capital button-create-new">
+                        <span>Opret ny</span>
+                    </div>
+
+                    <ul class="switcher switcher-view">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Uge</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Måned</span>
+                        </li>
+                    </ul>
+
+                    <ul class="switcher switcher-events-filter">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Open</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">With response</span>
+                        </li>
+
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="shadow"></div>
+
+                <div class="weekdays">
+                    <ul class="row weekdays-row">
+                        <li>
+                            <span>mandag</span>
+                        </li>
+
+                        <li>
+                            <span>tirsdag</span>
+                        </li>
+
+                        <li>
+                            <span>onsdag</span>
+                        </li>
+
+                        <li>
+                            <span>torsdag</span>
+                        </li>
+
+                        <li>
+                            <span>fredag</span>
+                        </li>
+
+                        <li>
+                            <span>lørdag</span>
+                        </li>
+
+                        <li>
+                            <span>søndag</span>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <div class="content month-view scrollable hide">
+                <ul class="months-list specific">
+                </ul>
+            </div>
+
+            <div class="content week-view scrollable hide">
+                <ul class="weeks-list specific">
+                </ul>
+            </div>
+        </section>
+
+        <section class="page page-feedback hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Feedback</span>
+
+                    <ul class="switcher switcher-feedback-type">
+                        <li>
+                            <span>Fejl</span>
+                        </li>
+                        
+                        <li>
+                            <span>Kommentar</span>
+                        </li>
+
+                        <li>
+                            <span>Forslag</span>
+                        </li>
+                    </ul>
+
+                    <div class="button right send-button capital">
+                        <span>Send</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="textarea-block">
+                    <div>
+                        <textarea rows="10" placeholder="Skriv din feedback her"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-settings hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Indstillinger</span>
+                </div>
+            </header>
+
+            <div class="content general-view hide">
+                <div class="line">
+                    <h2 class="title">Indstillinger</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="selected sections-menu-item sections-menu-item-general">
+                            <span>Generel</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifikationer</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Tilgængelighed</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Tid væk fra arbejdspladsen</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Integrationer</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Fornavn</span><em>Skriv fornavnet i feltet herunder</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-first_name" type="text" placeholder="Fornavn" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Efternavn</span><em>Skriv efternavnet i feltet herunder</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-last_name" type="text" placeholder="Efternavn" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Mobilnummer</span><em>Skriv dit mobiltelefonnummer i feltet herunder</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-mobile_phone" type="text" placeholder="Mobilnummer" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>E-mail adresse</span><em>Skriv din e-mail herunder</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-email" type="text" placeholder="E-mail adresse" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content notifications-view hide">
+                <div class="line">
+                    <h2 class="title">Indstillinger</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Generel</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-notifications">
+                            <span>Notifikationer</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Tilgængelighed</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Tid væk fra arbejdspladsen</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Integrationer</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send mig en besked via e-mail</span><em>Vil du have beskeder fra OVIVO på SMS?</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_email">
+                                <li class="option selected">
+                                    <span>Ja</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Nej</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send mig en besked via SMS</span><em>Vil du have beskeder fra OVIVO på E-mail?</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_sms">
+                                <li class="option selected">
+                                    <span>Ja</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Nej</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Aktivitetsrapport</span><em>Få en rapport over vagter i OVIVO hver mandag på e-mail</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-activity_digest">
+                                <li class="option selected">
+                                    <span>Ja</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Nej</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send mig en bekræftelse på at mit bud er modtaget, når jeg byder via SMS</span><em>Send mig en bekræftigelse når jeg har budt på en vagt via SMS</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-response_confirmation">
+                                <li class="option selected">
+                                    <span>Ja</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Nej</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send mig en påmindelse 24 timer før mine vagter begynder</span><em>Få tilsendt en påmindelse 24 timer før din vagt begynder</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_reminders">
+                                <li class="option selected">
+                                    <span>Ja</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Nej</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Indenfor dette tidsinterval, vil man som bruger modtage besked om vagter via SMS og/eller E-mail, straks efter en vagt er blevet oprettet af en planlægger</span><em>Her skal du vælge hvordan du gerne vil have besked om vagter. Ønsker du at modtage vagter så tidligt som muligt, så vælg 14 dage. Hvis du ønsker at få så få SMS'er som muligt, så vælg 3 dage. Hvis du gerne vil have de mest akutte vagter med det samme, men resten på opsamlinger, så vælg 14 dage.</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_urgent_within">
+                                <li class="option selected">
+                                    <span>3d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>7d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>14d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>&#8734;</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content availability-view hide">
+                <div class="line">
+                    <h2 class="title">Indstillinger</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Generel</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifikationer</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-availability">
+                            <span>Tilgængelighed</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Tid væk fra arbejdspladsen</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Integrationer</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Hvornår vil du gerne arbejde?</h2>
+                    <h3>Under dette menupunkt kan du oprette dine ønsker til arbejdstider. Klik på Tilføj ny tid, for at oprette en periode med vagter som du er interesseret i at tage.</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Tilføj ny tid</span>
+                        </div>
+                    </div>
+
+                    <ul class="columns weekdays-titles">
+                        <li>Mandag</li>
+                        <li>Tirsdag</li>
+                        <li>Onsdag</li>
+                        <li>Torsdag</li>
+                        <li>Fredag</li>
+                        <li>Lørdag</li>
+                        <li>Søndag</li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable elements working-hours apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content timeoff-view hide">
+                <div class="line">
+                    <h2 class="title">Indstillinger</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Generel</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifikationer</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Tilgængelighed</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-timeoff">
+                            <span>Tid væk fra arbejdspladsen</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Integrationer</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Hvornår ønsker du at holde fri?</h2>
+                    <h3>Herunder kan du oprette perioder, hvor du ikke ønsker at være tilgængelig.</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Tilføj tid væk fra arbejdspladsen</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="scroll-container scrollable elements inactivities apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content connections-view hide">
+                <div class="line">
+                    <h2 class="title">Indstillinger</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Generel</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifikationer</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Tilgængelighed</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Tid væk fra arbejdspladsen</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-connections">
+                            <span>Integrationer</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Forbind din OVIVO profil med sociale medier</h2>
+                    <h3>Herunder kan du forbinde din OVIVO profil og din Facebook profil. Dette gøre du ved, at klikke på forbind og logge ind på din Facebook profil i pop-up vinduet</h3>
+                </div>
+
+                <ul class="connections-container apply-animation">
+                    <li>
+                        <i class="icon-huge facebook"></i>
+                        <ul class="options-group options-facebook">
+                            <li class="option option-connect selected">
+                                <span>Tilslut</span>
+                            </li>
+
+                            <li class="option option-disconnect">
+                                <span>Afbryd</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="general-only notifications-only">
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Gem</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-help hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Hjælp</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <iframe></iframe>
+            </div>
+        </section>
+
+        <section class="page page-event-details hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title"></span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+
+                    <br />
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <div class="event-container">
+                </div>
+            </div>
+
+            <footer>
+                <div class="text-container">
+                    <div class="inner-container">
+                        <input class="comment-input" type="text" placeholder="Skriv en kommentar her..." />
+                    </div>
+                </div>
+
+                <div class="button-post post-comment">
+                    <span>Post</span>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-notifications hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Notifikationer</span>
+
+                    <div class="button right capital done-button">
+                        <span>X</span>
+                    </div>
+                </div>
+                
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="notifications-list">
+                </ul>
+
+                <div class="button load-more-button">
+                    <span>Hent mere</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-edit page-edit-working-hours hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Rediger ønsket arbejdstider</span>
+                    <span class="title edit-single-mode">Rediger ønsket arbejdstider på en dag</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Start tid</span><em>Dit ønske til arbejdstiden starter her</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-start_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Sluttidspunkt</span><em>Dit ønske til arbejdstiden slutter her</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-end_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Dato</span><em>Perioden starter her</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Start dato</span><em>Perioden slutter her</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Slutdato</span><em>Explanation 21</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Status</span><em>Explanation 22</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-available">
+                                    <option value="true">Tilgængelig</option>
+                                    <option value="false">Utilgængelig</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Gentag</span><em>Explanation 23</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-repeat">
+                                <option value="1">Hver anden uge</option>
+                                <option value="2">Hver anden uge</option>
+                                <option value="3">Hver tredje uge</option>
+                                <option value="4">Hver fjerde uge</option>
+                            </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Gem</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Slet</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-edit page-edit-inactivity hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Rediger inaktiv periode</span>
+                    <span class="title edit-single-mode">Rediger inaktiv periode på en dag</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Dato</span><em>Explanation 24</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Start dato</span><em>Explanation 25</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Slutdato</span><em>Explanation 26</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Årsag</span><em>Explanation 27</em>
+                            <strong class="badge">Ændret</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="Årsag" class="property-value property-value-reason" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Gem</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Slet</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="side-bar">
+            <h1 class="title">
+                <img src="/assets/img/global-loader.gif" />
+                <i class="logo title"></i>
+
+                <div class="notifications-indicator-container" style="display: none;">
+                    <div class="notifications-indicator">
+                        
+                    </div>
+                </div>
+            </h1>
+
+            <ul class="menu">
+                <li id="menu-item-calendar" class="menu-item selected">
+                    Kalender
+                </li>
+
+                <li id="menu-item-settings" class="menu-item">
+                    Indstillinger
+                </li>
+
+                <li id="menu-item-feedback" class="menu-item">
+                    Feedback
+                </li>
+
+                <li id="menu-item-help" class="menu-item">
+                    Hjælp
+                </li>
+
+                <li>
+                    <a href="#">Log ud</a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="popup-overlay" style="display: none;"></div>
+
+        <div class="popup popup-create-new no-bottom-bar" style="display: none;">
+            <h1 class="create-mode">Vælg:</h1>
+            <div class="close">Close</div>
+
+            <div class="button green-light button-create-time">
+                Opret tidspræference
+            </div>
+
+            <div class="button green-light button-create-timeoff">
+                Opret ferieperiode
+            </div>
+        </div>
+
+        <div class="popup popup-working-hour" style="display: none;">
+            <h1 class="create-mode">Tilføj ny tid</h1>
+            <h1 class="edit-mode">Ret tid</h1>
+
+            <h1 class="create-single-mode">Tilføj ny tid til en dag</h1>
+            <h1 class="edit-single-mode">Rediger ønske til fritid på en dag</h1>
+
+            <div class="close">Close</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Tid</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <span>from:</span>
+                        <input type="time" class="property-value property-value-start_time" />
+                        <span>til:</span>
+                        <input type="time" class="property-value property-value-end_time" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Dato</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>from:</span>
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                        <span>til:</span>
+                        <input type="date" class="property-value property-value-end_date datepicker" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Status</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-available">
+                            <option value="true">Tilgængelig</option>
+                            <option value="false">Utilgængelig</option>
+                        </select>
+                    </div>
+                </li>
+                
+                <li class="settings-item create-mode edit-mode">
+                    <div class="header">
+                        <span>Gentag</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-repeat">
+                            <option value="1">Hver anden uge</option>
+                            <option value="2">Hver anden uge</option>
+                            <option value="3">Hver tredje uge</option>
+                            <option value="4">Hver fjerde uge</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Tilføj tid
+                </div><div class="button green-light button-add create-single-mode">
+                    + Tilføj tid til en dag
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Slet
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Gem
+                </div>
+            </div>
+        </div>
+
+        <div class="popup popup-timeoff" style="display: none;">
+            <h1 class="create-mode">Tilføj ny tid væk fra arbejdspladsen</h1>
+            <h1 class="edit-mode">Rediger tid væk fra arbejdspladsen</h1>
+            <h1 class="create-single-mode">Tilføj ny fridag</h1>
+            <h1 class="edit-single-mode">Rediger fridag</h1>
+
+            <div class="close">Close</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span class="create-mode edit-mode">Select start and end dates of vacation period</span>
+                        <span class="create-single-mode edit-single-mode">Select time off day date</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>from:</span>
+                        <input type="text" class="datepicker property-value property-value-start" />
+                        <span>til:</span>
+                        <input type="text" class="datepicker property-value property-value-end" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <span>date:</span> <input type="text" class="datepicker property-value property-value-start" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Enter a reason of inactivity</span>
+                    </div>
+
+                    <div class="item-content">
+                        <input type="text" placeholder="Årsag" class="full-width property-value property-value-reason" />
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Tilføj tid væk fra arbejdspladsen
+                </div><div class="button green-light button-add create-single-mode">
+                    + Tilføj fridag
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Slet
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Gem
+                </div>
+            </div>
+        </div>
+
+        <div id="voice-recognition">
+            <div class="initial">
+                Initializing
+            </div>
+
+            <div class="processing">
+                Speak
+            </div>
+
+            <div class="result">
+            </div>
+
+            <div class="error">
+                Error state
+            </div>
+        </div>
+
+        <div id="fb-root"></div>
+
+        <script>
+            if (typeof window.ovivo === 'undefined') {
+                window.ovivo = {};
+            }
+
+            window.ovivo.dict = {"Activity report":"Aktivitetsrapport","Add day off":"Tilføj fridag","Add new day off":"Tilføj ny fridag","Add new time":"Tilføj ny tid","Add new time for one day":"Tilføj ny tid til en dag","Add new time off":"Tilføj ny tid væk fra arbejdspladsen","Add time":"Tilføj tid","Add time for one day":"Tilføj tid til en dag","Add time off":"Tilføj tid væk fra arbejdspladsen","Approved":"Godkendt","Assigned":"Tildelt","Availability":"Tilgængelighed","Available":"Tilgængelig","Awaiting reply":"Afventer svar","Bidding closed":"Udbud lukket","Calendar":"Kalender","Choose an option":"Vælg:","Comment":"Kommentar","Connect":"Tilslut","Connected":"Tilsluttet","Connections":"Integrationer","Create new":"Opret ny","Create time":"Opret tidspræference","Create timeoff":"Opret ferieperiode","Created by":"Oprettet af","Date":"Dato","Delete":"Slet","Disconnect":"Afbryd","Disconnected":"Afbrudt","E-mail address":"E-mail adresse","Edit":"Ret","Edit day off":"Rediger fridag","Edit inactivity":"Rediger inaktiv periode","Edit one-day inactivity":"Rediger inaktiv periode på en dag","Edit one-day working hours":"Rediger ønsket arbejdstider på en dag","Edit time":"Ret tid","Edit time for one day":"Rediger ønske til fritid på en dag","Edit time off":"Rediger tid væk fra arbejdspladsen","Edit working hours":"Rediger ønsket arbejdstider","End date":"Slutdato","End time":"Sluttidspunkt","Error":"Fejl","Every fourth week":"Hver fjerde uge","Every other week":"Hver anden uge","Every second week":"Hver anden uge","Every third week":"Hver tredje uge","Explanation 1":"Skriv fornavnet i feltet herunder","Explanation 10":"Her skal du vælge hvordan du gerne vil have besked om vagter. Ønsker du at modtage vagter så tidligt som muligt, så vælg 14 dage. Hvis du ønsker at få så få SMS'er som muligt, så vælg 3 dage. Hvis du gerne vil have de mest akutte vagter med det samme, men resten på opsamlinger, så vælg 14 dage.","Explanation 11":"Hvornår vil du gerne arbejde?","Explanation 12":"Under dette menupunkt kan du oprette dine ønsker til arbejdstider. Klik på Tilføj ny tid, for at oprette en periode med vagter som du er interesseret i at tage.","Explanation 13":"Hvornår ønsker du at holde fri?","Explanation 14":"Herunder kan du oprette perioder, hvor du ikke ønsker at være tilgængelig.","Explanation 15":"Forbind din OVIVO profil med sociale medier","Explanation 16":"Herunder kan du forbinde din OVIVO profil og din Facebook profil. Dette gøre du ved, at klikke på forbind og logge ind på din Facebook profil i pop-up vinduet","Explanation 17":"Dit ønske til arbejdstiden starter her","Explanation 18":"Dit ønske til arbejdstiden slutter her","Explanation 19":"Perioden starter her","Explanation 2":"Skriv efternavnet i feltet herunder","Explanation 20":"Perioden slutter her","Explanation 3":"Skriv dit mobiltelefonnummer i feltet herunder","Explanation 4":"Skriv din e-mail herunder","Explanation 5":"Vil du have beskeder fra OVIVO på SMS?","Explanation 6":"Vil du have beskeder fra OVIVO på E-mail?","Explanation 7":"Få en rapport over vagter i OVIVO hver mandag på e-mail","Explanation 8":"Send mig en bekræftigelse når jeg har budt på en vagt via SMS","Explanation 9":"Få tilsendt en påmindelse 24 timer før din vagt begynder","February":"Februar","First name":"Fornavn","Friday":"Fredag","General":"Generel","Help":"Hjælp","January":"Januar","July":"Juli","June":"Juni","Last name":"Efternavn","Leave your feedback here":"Skriv din feedback her","Load more":"Hent mere","Loading content":"Henter indhold","Logout":"Log ud","Make a bid":"Byd","March":"Marts","May":"Maj","Mobile number":"Mobilnummer","Monday":"Mandag","Month":"Måned","No":"Nej","Not approved":"Ikke godkendt","Notifications":"Notifikationer","October":"Oktober","Params are missing":"Parametre mangler","Pending":"Afventer","Reason":"Årsag","Remove":"Fjern","Repeat":"Gentag","Saturday":"Lørdag","Save":"Gem","Send me confirmation when bidding through SMS":"Send mig en bekræftelse på at mit bud er modtaget, når jeg byder via SMS","Send me notifications 24 hour before assigned events starts":"Send mig en påmindelse 24 timer før mine vagter begynder","Send me notifications via SMS":"Send mig en besked via SMS","Send me notifications via e-mail":"Send mig en besked via e-mail","Settings":"Indstillinger","Start date":"Start dato","Start time":"Start tid","Suggestion":"Forslag","Sunday":"Søndag","Thanks for your feedback":"Tak for din feedback","The number of days inside of which a user will be notified of a new event immediately by text and/or email":"Indenfor dette tidsinterval, vil man som bruger modtage besked om vagter via SMS og/eller E-mail, straks efter en vagt er blevet oprettet af en planlægger","Thursday":"Torsdag","Time":"Tid","Time off":"Tid væk fra arbejdspladsen","Today":"I dag","Tuesday":"Tirsdag","Unavailable":"Utilgængelig","Wednesday":"Onsdag","Week":"Uge","Write a comment here...":"Skriv en kommentar her...","Yes":"Ja","Your bid has been removed":"Dit bud er blevet fjernet","Your bid has now been received":"Dit bud er modtaget","a minute ago":"et minut siden","a second ago":"et sekund siden","an hour ago":"en time siden","changed":"Ændret","few hours ago":"få timer siden","few minutes ago":"få minutter siden","friday":"fredag","hour":"time","hours":"timer","just now":"lige nu","monday":"mandag","saturday":"lørdag","sunday":"søndag","thursday":"torsdag","to":"til","tuesday":"tirsdag","wednesday":"onsdag","&#8734;":"&#8734;","April":"April","August":"August","Close":"Close","December":"December","Enter a reason of inactivity":"Enter a reason of inactivity","Error state":"Error state","Explanation 21":"Explanation 21","Explanation 22":"Explanation 22","Explanation 23":"Explanation 23","Explanation 24":"Explanation 24","Explanation 25":"Explanation 25","Explanation 26":"Explanation 26","Explanation 27":"Explanation 27","Feedback":"Feedback","Initializing":"Initializing","Note":"Note","November":"November","Post":"Post","Select start and end dates of vacation period":"Select start and end dates of vacation period","Select time off day date":"Select time off day date","Send":"Send","September":"September","Speak":"Speak","Status":"Status","calendar":"calendar","create":"create","d":"d","date":"date","event":"event","events":"events","feedback":"feedback","from":"from","help":"help","open":"open","settings":"settings","Explanation 28":"Explanation 28","Explanation 29":"Explanation 29","Explanation 30":"Explanation 30","Explanation 31":"Explanation 31","Explanation 32":"Explanation 32","Explanation 33":"Explanation 33"};
+        </script>
+
+        <script>
+            if (typeof window.gettext === 'undefined') {
+                window.gettext = (function () {
+                    return function (msgid) {
+                        if (typeof window.ovivo.dict[msgid] !== 'undefined') {
+                            return window.ovivo.dict[msgid];
+                        }
+
+                        return msgid;
+                    };
+                } ());
+            }
+
+            if (typeof window.ngettext === 'undefined') {
+                window.ngettext = (function () {
+                    return function (singular, plural, num) {
+                        if ((num === 1) || (num % 10 === 1)) {
+                            return (window.ovivo.dict[singular] !== undefined)? window.ovivo.dict[singular]: singular;
+                        } else {
+                            return (window.ovivo.dict[plural] !== undefined)? window.ovivo.dict[plural]: plural;
+                        }
+                    };
+                } ());
+            }
+        </script>
+
+        <script>
+            if (typeof ovivo === 'undefined') { ovivo = {}; }
+
+            ovivo._config = {
+                USER_ID: 6167,
+                TEST_SESSIONID_COOKIE: 'baa939fc103fa3c398e8ad4ff8d4ccb3',
+                SOCKET_IO_CONNECT_URL: 'http://dev.ovivo.dk:8888/',
+                FB_APP_ID: 105427519636767,
+                TIMEZONE_OFFSET: 7200000,
+                PAGE_TRANSITION_ANIMATION: true,
+                LOADER_URL: '/assets/img/ajax-loader.gif',
+                LANG: 'da-DK'
+            };
+        </script>
+
+        <!-- <script src="/lib/require.js" data-main="/src/js/main"></script> -->
+        <script src="/lib/require.js"></script>
+        <script src="/dist/script.js"></script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "http://dev.ovivo.dk:8888/socket.io/socket.io.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'socket_io'));
+        </script>
+    </body>
+</html>

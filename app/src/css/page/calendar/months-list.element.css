@@ -1,0 +1,41 @@
+ul.months-list.specific .element > div.element-container, ul.weeks-list.specific .element > div.element-container {
+  margin: 7px 0 0 0; }
+  ul.months-list.specific .element > div.element-container .info, ul.weeks-list.specific .element > div.element-container .info {
+    cursor: pointer;
+    padding: 4px 7px; }
+    ul.months-list.specific .element > div.element-container .info > h3, ul.months-list.specific .element > div.element-container .info > h4, ul.weeks-list.specific .element > div.element-container .info > h3, ul.weeks-list.specific .element > div.element-container .info > h4 {
+      display: none; }
+    ul.months-list.specific .element > div.element-container .info > h2, ul.weeks-list.specific .element > div.element-container .info > h2 {
+      font-family: OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+      font-size: 13px;
+      font-weight: normal; }
+      ul.months-list.specific .element > div.element-container .info > h2:first-child, ul.weeks-list.specific .element > div.element-container .info > h2:first-child {
+        font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+        font-size: 14px; }
+      ul.months-list.specific .element > div.element-container .info > h2 > em, ul.weeks-list.specific .element > div.element-container .info > h2 > em {
+        display: none; }
+ul.months-list.specific .element.event, ul.weeks-list.specific .element.event {
+  position: relative;
+  z-index: 1; }
+  ul.months-list.specific .element.event > div.element-container.closed > div.buttons, ul.months-list.specific .element.event > div.element-container.bidding-closed > div.buttons, ul.weeks-list.specific .element.event > div.element-container.closed > div.buttons, ul.weeks-list.specific .element.event > div.element-container.bidding-closed > div.buttons {
+    display: none; }
+  ul.months-list.specific .element.event > div.element-container.non-actual, ul.weeks-list.specific .element.event > div.element-container.non-actual {
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+    ul.months-list.specific .element.event > div.element-container.non-actual > div.strip, ul.weeks-list.specific .element.event > div.element-container.non-actual > div.strip {
+      background: gray; }
+  ul.months-list.specific .element.event > div.element-container .info, ul.weeks-list.specific .element.event > div.element-container .info {
+    cursor: pointer; }
+    ul.months-list.specific .element.event > div.element-container .info > h3, ul.months-list.specific .element.event > div.element-container .info > h4, ul.weeks-list.specific .element.event > div.element-container .info > h3, ul.weeks-list.specific .element.event > div.element-container .info > h4 {
+      display: none; }
+  ul.months-list.specific .element.event > div.element-container > div.buttons, ul.weeks-list.specific .element.event > div.element-container > div.buttons {
+    height: 21px; }
+    ul.months-list.specific .element.event > div.element-container > div.buttons > div.button-element, ul.weeks-list.specific .element.event > div.element-container > div.buttons > div.button-element {
+      padding: 3px 0; }
+      ul.months-list.specific .element.event > div.element-container > div.buttons > div.button-element > div.button-inner, ul.weeks-list.specific .element.event > div.element-container > div.buttons > div.button-element > div.button-inner {
+        height: 13px;
+        line-height: 13px; }
+  ul.months-list.specific .element.event:last-child, ul.months-list.specific .element.event.expanded, ul.weeks-list.specific .element.event:last-child, ul.weeks-list.specific .element.event.expanded {
+    max-height: none; }
+  ul.months-list.specific .element.event .element-container > div.buttons > div.button-element.single, ul.weeks-list.specific .element.event .element-container > div.buttons > div.button-element.single {
+    width: 100%; }

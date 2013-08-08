@@ -1,0 +1,78 @@
+.page.scrolled-top > header div.shadow {
+  display: block; }
+
+.page.scrolled-bottom > footer div.shadow {
+  display: block; }
+
+.page > header, .page > footer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  background: white;
+  padding: 28px 0 28px 0; }
+  .page > header i, .page > footer i {
+    cursor: pointer; }
+  .page > header .shadow, .page > footer .shadow {
+    bottom: -2px; }
+  .page > header > div.line, .page > footer > div.line {
+    height: 39px;
+    line-height: 16px;
+    margin-left: 15px; }
+    .page > header > div.line > *, .page > footer > div.line > * {
+      vertical-align: middle; }
+    .page > header > div.line > i.navigation, .page > footer > div.line > i.navigation {
+      position: relative;
+      top: 1px; }
+    .page > header > div.line > div.placeholder, .page > footer > div.line > div.placeholder {
+      height: 38px;
+      width: 1px;
+      display: inline-block;
+      margin: 0 0 0 0; }
+    .page > header > div.line > span.title, .page > footer > div.line > span.title {
+      font-size: 21px;
+      font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+      color: #333333;
+      margin: 0 10px 0 20px; }
+    .page > header > div.line > em.title, .page > footer > div.line > em.title {
+      font-size: 21px;
+      font-style: normal;
+      color: #333333;
+      margin: 0 15px 0 0; }
+    .page > header > div.line > div.button, .page > footer > div.line > div.button {
+      margin: 0 10px 0 0; }
+      .page > header > div.line > div.button.today, .page > footer > div.line > div.button.today {
+        width: 100px;
+        margin-left: 10px; }
+      .page > header > div.line > div.button.right, .page > footer > div.line > div.button.right {
+        float: right;
+        width: 158px;
+        margin: 0 30px 0 0; }
+    .page > header > div.line > ul.switcher, .page > footer > div.line > ul.switcher {
+      display: inline-block;
+      float: right;
+      margin: 0 20px 0 0;
+      padding: 0 4px;
+      background: white;
+      height: 40px; }
+      .page > header > div.line > ul.switcher > li, .page > footer > div.line > ul.switcher > li {
+        display: inline-block;
+        position: relative;
+        top: 4px;
+        border: 2px solid transparent;
+        cursor: pointer; }
+        .page > header > div.line > ul.switcher > li > span, .page > footer > div.line > ul.switcher > li > span {
+          display: inline-block;
+          padding: 6px; }
+        .page > header > div.line > ul.switcher > li.selected, .page > footer > div.line > ul.switcher > li.selected {
+          color: #fd5308; }
+
+.page > footer {
+  top: auto;
+  left: 0;
+  bottom: 0; }
+  .page > footer div.shadow {
+    position: absolute;
+    bottom: auto;
+    top: -2px; }

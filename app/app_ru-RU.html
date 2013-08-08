@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<!--<html lang="en" manifest="/app.appcache"> -->
+
+<html lang="en">
+    <head>
+        <script>
+            window._start = new Date()
+        </script>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link href="/dist/style.css" rel="stylesheet" />
+        
+        <title>Ovivo (Tavis->AWS integration test)</title>
+
+        <!--[if lte IE 8]>
+        <script src="/lib/html5shiv.js"></script>
+
+        <link href="/dist/style-ie.css" rel="stylesheet" />
+        <![endif]-->
+     </head>
+
+    <body class="loading loading-running initial-load" style="overflow: hidden;">
+        <!-- <div id="splash" style="background: #f3f2ec; position: absolute; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%;">
+            <div style="width: 160px; height: 30px; margin: 0 auto 0 auto; position: relative; top: 50%;">
+                <div style="position: relative; top: -15px; width: 100%; height: 100%; text-align:center;">
+                    <div id="splash-logo-inner" src="/assets/img/loading-title-100x18.png" style="display: block; margin: 0 auto 5px auto; width: 150px; height: 18px; text-align: center; font: bold 12px 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;">Загрузка</div>
+                    <img src="/assets/img/ajax-loader.gif" />
+                </div>
+            </div>
+        </div> -->
+
+        <section class="page page-calendar hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button bordered today month-today month-only capital">
+                        <span>Сегодня</span>
+                    </div>
+
+                    <div class="button bordered today week-today week-only capital">
+                        <span>Сегодня</span>
+                    </div>
+
+                    <button class="navigation navigate-left">
+                        <i class="icon left inline no-selection"></i>
+                    </button>
+
+                    <button class="navigation navigate-right">
+                        <i class="icon right inline no-selection"></i>
+                    </button>
+
+                    <span class="title week-title week-only"></span>
+                    <span class="title month-title month-only"></span>
+
+                    <div class="button right capital button-create-new">
+                        <span>Создать новое</span>
+                    </div>
+
+                    <ul class="switcher switcher-view">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Неделя</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Месяц</span>
+                        </li>
+                    </ul>
+
+                    <ul class="switcher switcher-events-filter">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Open</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">With response</span>
+                        </li>
+
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="shadow"></div>
+
+                <div class="weekdays">
+                    <ul class="row weekdays-row">
+                        <li>
+                            <span>понедельник</span>
+                        </li>
+
+                        <li>
+                            <span>вторник</span>
+                        </li>
+
+                        <li>
+                            <span>среда</span>
+                        </li>
+
+                        <li>
+                            <span>четверг</span>
+                        </li>
+
+                        <li>
+                            <span>пятница</span>
+                        </li>
+
+                        <li>
+                            <span>суббота</span>
+                        </li>
+
+                        <li>
+                            <span>воскресенье</span>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <div class="content month-view scrollable hide">
+                <ul class="months-list specific">
+                </ul>
+            </div>
+
+            <div class="content week-view scrollable hide">
+                <ul class="weeks-list specific">
+                </ul>
+            </div>
+        </section>
+
+        <section class="page page-feedback hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Отзыв</span>
+
+                    <ul class="switcher switcher-feedback-type">
+                        <li>
+                            <span>Ошибка</span>
+                        </li>
+                        
+                        <li>
+                            <span>Комментарий</span>
+                        </li>
+
+                        <li>
+                            <span>Совет</span>
+                        </li>
+                    </ul>
+
+                    <div class="button right send-button capital">
+                        <span>Отправить</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="textarea-block">
+                    <div>
+                        <textarea rows="10" placeholder="Оставьте свой отзыв здесь"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-settings hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Настройки</span>
+                </div>
+            </header>
+
+            <div class="content general-view hide">
+                <div class="line">
+                    <h2 class="title">Настройки</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="selected sections-menu-item sections-menu-item-general">
+                            <span>Общие</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Уведомление</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Доступность</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Выходной</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Контакты</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Имя</span><em>Explanation 1</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-first_name" type="text" placeholder="Имя" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Фамилия</span><em>Explanation 2</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-last_name" type="text" placeholder="Фамилия" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Мобильный телефон</span><em>Explanation 3</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-mobile_phone" type="text" placeholder="Мобильный телефон" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>E-mail адрес</span><em>Explanation 4</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-email" type="text" placeholder="E-mail адрес" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content notifications-view hide">
+                <div class="line">
+                    <h2 class="title">Настройки</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Общие</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-notifications">
+                            <span>Уведомление</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Доступность</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Выходной</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Контакты</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications via e-mail</span><em>Explanation 5</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_email">
+                                <li class="option selected">
+                                    <span>Да</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Нет</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications via SMS</span><em>Explanation 6</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_sms">
+                                <li class="option selected">
+                                    <span>Да</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Нет</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Отчет об активности</span><em>Explanation 7</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-activity_digest">
+                                <li class="option selected">
+                                    <span>Да</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Нет</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me confirmation when bidding through SMS</span><em>Explanation 8</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-response_confirmation">
+                                <li class="option selected">
+                                    <span>Да</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Нет</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications 24 hour before assigned events starts</span><em>Explanation 9</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_reminders">
+                                <li class="option selected">
+                                    <span>Да</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>Нет</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>The number of days inside of which a user will be notified of a new event immediately by text and/or email</span><em>Explanation 10</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_urgent_within">
+                                <li class="option selected">
+                                    <span>3д</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>7д</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>14д</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>&#8734;</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content availability-view hide">
+                <div class="line">
+                    <h2 class="title">Настройки</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Общие</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Уведомление</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-availability">
+                            <span>Доступность</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Выходной</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Контакты</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 11</h2>
+                    <h3>Explanation 12</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Добавить новое время</span>
+                        </div>
+                    </div>
+
+                    <ul class="columns weekdays-titles">
+                        <li>Понедельник</li>
+                        <li>Вторник</li>
+                        <li>Среда</li>
+                        <li>Четверг</li>
+                        <li>Пятница</li>
+                        <li>Суббота</li>
+                        <li>Воскресенье</li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable elements working-hours apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content timeoff-view hide">
+                <div class="line">
+                    <h2 class="title">Настройки</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Общие</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Уведомление</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Доступность</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-timeoff">
+                            <span>Выходной</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Контакты</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 13</h2>
+                    <h3>Explanation 14</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Добавить выходные</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="scroll-container scrollable elements inactivities apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content connections-view hide">
+                <div class="line">
+                    <h2 class="title">Настройки</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>Общие</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Уведомление</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Доступность</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Выходной</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-connections">
+                            <span>Контакты</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 15</h2>
+                    <h3>Explanation 16</h3>
+                </div>
+
+                <ul class="connections-container apply-animation">
+                    <li>
+                        <i class="icon-huge facebook"></i>
+                        <ul class="options-group options-facebook">
+                            <li class="option option-connect selected">
+                                <span>Подключить</span>
+                            </li>
+
+                            <li class="option option-disconnect">
+                                <span>Отключить</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="general-only notifications-only">
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Сохранить</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-help hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Помощь</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <iframe></iframe>
+            </div>
+        </section>
+
+        <section class="page page-event-details hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title"></span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+
+                    <br />
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <div class="event-container">
+                </div>
+            </div>
+
+            <footer>
+                <div class="text-container">
+                    <div class="inner-container">
+                        <input class="comment-input" type="text" placeholder="Напишите комментарий здесь..." />
+                    </div>
+                </div>
+
+                <div class="button-post post-comment">
+                    <span>Отправить</span>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-notifications hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Уведомление</span>
+
+                    <div class="button right capital done-button">
+                        <span>X</span>
+                    </div>
+                </div>
+                
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="notifications-list">
+                </ul>
+
+                <div class="button load-more-button">
+                    <span>Загрусить еще</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-edit page-edit-working-hours hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Редактировать время</span>
+                    <span class="title edit-single-mode">Редактировать рабочее время</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Конец</span><em>Explanation 17</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-start_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Начало</span><em>Explanation 18</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-end_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Дата</span><em>Explanation 19</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Начало</span><em>Explanation 20</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Конец</span><em>Explanation 21</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Статус</span><em>Explanation 22</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-available">
+                                    <option value="true">Доступен</option>
+                                    <option value="false">Недоступно</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Повторение</span><em>Explanation 23</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-repeat">
+                                <option value="1">Каждую неделю</option>
+                                <option value="2">Каждую вторую неделю</option>
+                                <option value="3">Каждую третью неделю</option>
+                                <option value="4">Каждую четверту неделю</option>
+                            </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Сохранить</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Удалить</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-edit page-edit-inactivity hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Редактировать выходные</span>
+                    <span class="title edit-single-mode">Редактировать выходной</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Дата</span><em>Explanation 24</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Начало</span><em>Explanation 25</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Конец</span><em>Explanation 26</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Причина</span><em>Explanation 27</em>
+                            <strong class="badge">изменено</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="Причина" class="property-value property-value-reason" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Сохранить</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Удалить</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="side-bar">
+            <h1 class="title">
+                <img src="/assets/img/global-loader.gif" />
+                <i class="logo title"></i>
+
+                <div class="notifications-indicator-container" style="display: none;">
+                    <div class="notifications-indicator">
+                        
+                    </div>
+                </div>
+            </h1>
+
+            <ul class="menu">
+                <li id="menu-item-calendar" class="menu-item selected">
+                    Календарь
+                </li>
+
+                <li id="menu-item-settings" class="menu-item">
+                    Настройки
+                </li>
+
+                <li id="menu-item-feedback" class="menu-item">
+                    Отзыв
+                </li>
+
+                <li id="menu-item-help" class="menu-item">
+                    Помощь
+                </li>
+
+                <li>
+                    <a href="#">Выйти</a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="popup-overlay" style="display: none;"></div>
+
+        <div class="popup popup-create-new no-bottom-bar" style="display: none;">
+            <h1 class="create-mode">Выберите вариант</h1>
+            <div class="close">Закрыть</div>
+
+            <div class="button green-light button-create-time">
+                Создать время
+            </div>
+
+            <div class="button green-light button-create-timeoff">
+                Создать выходной
+            </div>
+        </div>
+
+        <div class="popup popup-working-hour" style="display: none;">
+            <h1 class="create-mode">Добавить новое время</h1>
+            <h1 class="edit-mode">Редактировать время</h1>
+
+            <h1 class="create-single-mode">Добавить новое время в один день</h1>
+            <h1 class="edit-single-mode">Редактировать время за одинь день</h1>
+
+            <div class="close">Закрыть</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Время</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <span>от:</span>
+                        <input type="time" class="property-value property-value-start_time" />
+                        <span>до:</span>
+                        <input type="time" class="property-value property-value-end_time" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Дата</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>от:</span>
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                        <span>до:</span>
+                        <input type="date" class="property-value property-value-end_date datepicker" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Статус</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-available">
+                            <option value="true">Доступен</option>
+                            <option value="false">Недоступно</option>
+                        </select>
+                    </div>
+                </li>
+                
+                <li class="settings-item create-mode edit-mode">
+                    <div class="header">
+                        <span>Повторение</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-repeat">
+                            <option value="1">Каждую неделю</option>
+                            <option value="2">Каждую вторую неделю</option>
+                            <option value="3">Каждую третью неделю</option>
+                            <option value="4">Каждую четверту неделю</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Добавить время
+                </div><div class="button green-light button-add create-single-mode">
+                    + Добавить время в один день
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Удалить
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Сохранить
+                </div>
+            </div>
+        </div>
+
+        <div class="popup popup-timeoff" style="display: none;">
+            <h1 class="create-mode">Добавить новые выходные</h1>
+            <h1 class="edit-mode">Редактировать выходной</h1>
+            <h1 class="create-single-mode">Добавить новый выходной</h1>
+            <h1 class="edit-single-mode">Редактировать выходной</h1>
+
+            <div class="close">Закрыть</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span class="create-mode edit-mode">Выберите начало и конец периода выходных</span>
+                        <span class="create-single-mode edit-single-mode">Выберите дату выходного</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>от:</span>
+                        <input type="text" class="datepicker property-value property-value-start" />
+                        <span>до:</span>
+                        <input type="text" class="datepicker property-value property-value-end" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <span>дата:</span> <input type="text" class="datepicker property-value property-value-start" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Введите причину выходного</span>
+                    </div>
+
+                    <div class="item-content">
+                        <input type="text" placeholder="Причина" class="full-width property-value property-value-reason" />
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Добавить выходные
+                </div><div class="button green-light button-add create-single-mode">
+                    + Добавить выходной
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Удалить
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Сохранить
+                </div>
+            </div>
+        </div>
+
+        <div id="voice-recognition">
+            <div class="initial">
+                Initializing
+            </div>
+
+            <div class="processing">
+                Speak
+            </div>
+
+            <div class="result">
+            </div>
+
+            <div class="error">
+                Error state
+            </div>
+        </div>
+
+        <div id="fb-root"></div>
+
+        <script>
+            if (typeof window.ovivo === 'undefined') {
+                window.ovivo = {};
+            }
+
+            window.ovivo.dict = {"Activity report":"Отчет об активности","Add day off":"Добавить выходной","Add new day off":"Добавить новый выходной","Add new time":"Добавить новое время","Add new time for one day":"Добавить новое время в один день","Add new time off":"Добавить новые выходные","Add time":"Добавить время","Add time for one day":"Добавить время в один день","Add time off":"Добавить выходные","Approved":"Подтверждено","April":"Апрель","Assigned":"Назначено","August":"Август","Availability":"Доступность","Available":"Доступен","Awaiting reply":"Ожидание ответа","Bidding closed":"Этап ответа завершен","Calendar":"Календарь","Choose an option":"Выберите вариант","Close":"Закрыть","Comment":"Комментарий","Connect":"Подключить","Connected":"Подключено","Connections":"Контакты","Create new":"Создать новое","Create time":"Создать время","Create timeoff":"Создать выходной","Created by":"Создано","Date":"Дата","December":"Декабрь","Delete":"Удалить","Disconnect":"Отключить","Disconnected":"Отключено","E-mail address":"E-mail адрес","Edit":"Редактировать","Edit day off":"Редактировать выходной","Edit inactivity":"Редактировать выходные","Edit one-day inactivity":"Редактировать выходной","Edit one-day working hours":"Редактировать рабочее время","Edit time":"Редактировать время","Edit time for one day":"Редактировать время за одинь день","Edit time off":"Редактировать выходной","Edit working hours":"Редактировать время","End date":"Конец","End time":"Начало","Enter a reason of inactivity":"Введите причину выходного","Error":"Ошибка","Every fourth week":"Каждую четверту неделю","Every other week":"Каждую неделю","Every second week":"Каждую вторую неделю","Every third week":"Каждую третью неделю","February":"Февраль","Feedback":"Отзыв","First name":"Имя","Friday":"Пятница","General":"Общие","Help":"Помощь","January":"Январь","July":"Июль","June":"Июнь","Last name":"Фамилия","Leave your feedback here":"Оставьте свой отзыв здесь","Load more":"Загрусить еще","Loading content":"Загрузка","Logout":"Выйти","Make a bid":"Ответить","March":"Март","May":"Май","Mobile number":"Мобильный телефон","Monday":"Понедельник","Month":"Месяц","No":"Нет","Not approved":"Нет подтверждения","Note":"Запись","Notifications":"Уведомление","November":"Ноябрь","October":"Октябрь","Params are missing":"Параметры отсутствуют","Pending":"Ожидание","Post":"Отправить","Reason":"Причина","Remove":"Удалить","Repeat":"Повторение","Saturday":"Суббота","Save":"Сохранить","Select start and end dates of vacation period":"Выберите начало и конец периода выходных","Select time off day date":"Выберите дату выходного","Send":"Отправить","September":"Сентябрь","Settings":"Настройки","Start date":"Начало","Start time":"Конец","Status":"Статус","Suggestion":"Совет","Sunday":"Воскресенье","Thanks for your feedback":"Спасибо за ваш отзыв","Thursday":"Четверг","Time":"Время","Time off":"Выходной","Today":"Сегодня","Tuesday":"Вторник","Unavailable":"Недоступно","Wednesday":"Среда","Week":"Неделя","Write a comment here...":"Напишите комментарий здесь...","Yes":"Да","Your bid has been removed":"Ваш ответ был удален","Your bid has now been received":"Ваш ответ получен","a minute ago":"минуту назад","a second ago":"секунду назад","an hour ago":"час назад","calendar":"календарь","changed":"изменено","create":"создать","d":"д","date":"дата","event":"событие","events":"события","feedback":"отзыв","few hours ago":"несколько часов назад","few minutes ago":"несколько минут назад","friday":"пятница","from":"от","help":"помощь","hour":"час","hours":"часов","just now":"только что","monday":"понедельник","open":"открыть","saturday":"суббота","settings":"настройки","sunday":"воскресенье","thursday":"четверг","to":"до","tuesday":"вторник","wednesday":"среда","&#8734;":"&#8734;","Error state":"Error state","Explanation 1":"Explanation 1","Explanation 10":"Explanation 10","Explanation 11":"Explanation 11","Explanation 12":"Explanation 12","Explanation 13":"Explanation 13","Explanation 14":"Explanation 14","Explanation 15":"Explanation 15","Explanation 16":"Explanation 16","Explanation 17":"Explanation 17","Explanation 18":"Explanation 18","Explanation 19":"Explanation 19","Explanation 2":"Explanation 2","Explanation 20":"Explanation 20","Explanation 21":"Explanation 21","Explanation 22":"Explanation 22","Explanation 23":"Explanation 23","Explanation 24":"Explanation 24","Explanation 25":"Explanation 25","Explanation 26":"Explanation 26","Explanation 27":"Explanation 27","Explanation 3":"Explanation 3","Explanation 4":"Explanation 4","Explanation 5":"Explanation 5","Explanation 6":"Explanation 6","Explanation 7":"Explanation 7","Explanation 8":"Explanation 8","Explanation 9":"Explanation 9","Initializing":"Initializing","Send me confirmation when bidding through SMS":"Send me confirmation when bidding through SMS","Send me notifications 24 hour before assigned events starts":"Send me notifications 24 hour before assigned events starts","Send me notifications via SMS":"Send me notifications via SMS","Send me notifications via e-mail":"Send me notifications via e-mail","Speak":"Speak","The number of days inside of which a user will be notified of a new event immediately by text and/or email":"The number of days inside of which a user will be notified of a new event immediately by text and/or email"};
+        </script>
+
+        <script>
+            if (typeof window.gettext === 'undefined') {
+                window.gettext = (function () {
+                    return function (msgid) {
+                        if (typeof window.ovivo.dict[msgid] !== 'undefined') {
+                            return window.ovivo.dict[msgid];
+                        }
+
+                        return msgid;
+                    };
+                } ());
+            }
+
+            if (typeof window.ngettext === 'undefined') {
+                window.ngettext = (function () {
+                    return function (singular, plural, num) {
+                        if ((num === 1) || (num % 10 === 1)) {
+                            return (window.ovivo.dict[singular] !== undefined)? window.ovivo.dict[singular]: singular;
+                        } else {
+                            return (window.ovivo.dict[plural] !== undefined)? window.ovivo.dict[plural]: plural;
+                        }
+                    };
+                } ());
+            }
+        </script>
+
+        <script>
+            if (typeof ovivo === 'undefined') { ovivo = {}; }
+
+            ovivo._config = {
+                USER_ID: 6167,
+                TEST_SESSIONID_COOKIE: 'baa939fc103fa3c398e8ad4ff8d4ccb3',
+                SOCKET_IO_CONNECT_URL: 'http://dev.ovivo.dk:8888/',
+                FB_APP_ID: 105427519636767,
+                TIMEZONE_OFFSET: 7200000,
+                PAGE_TRANSITION_ANIMATION: true,
+                LOADER_URL: '/assets/img/ajax-loader.gif',
+                LANG: 'ru-RU'
+            };
+        </script>
+
+        <!-- <script src="/lib/require.js" data-main="/src/js/main"></script> -->
+        <script src="/lib/require.js"></script>
+        <script src="/dist/script.js"></script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "http://dev.ovivo.dk:8888/socket.io/socket.io.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'socket_io'));
+        </script>
+    </body>
+</html>

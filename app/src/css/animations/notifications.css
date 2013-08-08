@@ -1,0 +1,44 @@
+@-webkit-keyframes notifications-enter {
+  from {
+    -webkit-transform: translate(20px);
+    opacity: 0; }
+
+  to {
+    -webkit-transform: translate(0);
+    opacity: 1; } }
+
+@-moz-keyframes notifications-enter {
+  from {
+    -moz-transform: translate(20px);
+    opacity: 0; }
+
+  to {
+    -moz-transform: translate(0);
+    opacity: 1; } }
+
+@-ms-keyframes notifications-enter {
+  from {
+    -ms-transform: translate(20px);
+    opacity: 0; }
+
+  to {
+    -ms-transform: translate(0);
+    opacity: 1; } }
+
+@-o-keyframes notifications-enter {
+  from {
+    -o-transform: translate(20px);
+    opacity: 0; }
+
+  to {
+    -o-transform: translate(0);
+    opacity: 1; } }
+
+@keyframes notifications-enter {
+  from {
+    transform: translate(20px);
+    opacity: 0; }
+
+  to {
+    transform: translate(0);
+    opacity: 1; } }

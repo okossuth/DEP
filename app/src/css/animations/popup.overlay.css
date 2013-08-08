@@ -1,0 +1,69 @@
+@-webkit-keyframes popup-overlay-enter {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0.75; } }
+
+@-moz-keyframes popup-overlay-enter {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0.75; } }
+
+@-ms-keyframes popup-overlay-enter {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0.75; } }
+
+@-o-keyframes popup-overlay-enter {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0.75; } }
+
+@keyframes popup-overlay-enter {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0.75; } }
+
+@-webkit-keyframes popup-overlay-exit {
+  from {
+    opacity: 0.75; }
+
+  to {
+    opacity: 0; } }
+
+@-moz-keyframes popup-overlay-exit {
+  from {
+    opacity: 0.75; }
+
+  to {
+    opacity: 0; } }
+
+@-ms-keyframes popup-overlay-exit {
+  from {
+    opacity: 0.75; }
+
+  to {
+    opacity: 0; } }
+
+@-o-keyframes popup-overlay-exit {
+  from {
+    opacity: 0.75; }
+
+  to {
+    opacity: 0; } }
+
+@keyframes popup-overlay-exit {
+  from {
+    opacity: 0.75; }
+
+  to {
+    opacity: 0; } }

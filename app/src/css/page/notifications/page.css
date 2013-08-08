@@ -1,0 +1,20 @@
+.page.page-notifications {
+  width: 300px;
+  z-index: 9999;
+  box-shadow: 2px 0 30px #888888; }
+  .page.page-notifications.enter {
+    -webkit-animation: notifications-enter 200ms ease-out 0s;
+    -moz-animation: notifications-enter 200ms ease-out 0s;
+    -ms-animation: notifications-enter 200ms ease-out 0s;
+    -o-animation: notifications-enter 200ms ease-out 0s;
+    animation: notifications-enter 200ms ease-out 0s; }
+  .page.page-notifications.exit {
+    -webkit-animation: notifications-exit 200ms ease-out 0s;
+    -moz-animation: notifications-exit 200ms ease-out 0s;
+    -ms-animation: notifications-exit 200ms ease-out 0s;
+    -o-animation: notifications-exit 200ms ease-out 0s;
+    animation: notifications-exit 200ms ease-out 0s; }
+  .page.page-notifications > header > div.line > div.button {
+    width: 40px; }
+  .page.page-notifications > .content {
+    background: white; }

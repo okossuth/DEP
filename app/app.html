@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<!--<html lang="en" manifest="/app.appcache"> -->
+
+<html lang="en">
+    <head>
+        <script>
+            window._start = new Date()
+        </script>
+        <meta charset="utf-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <link href="/dist/style.css" rel="stylesheet" />
+        
+        <title>Ovivo (Tavis->AWS integration test)</title>
+
+        <!--[if lte IE 8]>
+        <script src="/lib/html5shiv.js"></script>
+
+        <link href="/dist/style-ie.css" rel="stylesheet" />
+        <![endif]-->
+     </head>
+
+    <body class="loading loading-running initial-load" style="overflow: hidden;">
+        <!-- <div id="splash" style="background: #f3f2ec; position: absolute; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%;">
+            <div style="width: 160px; height: 30px; margin: 0 auto 0 auto; position: relative; top: 50%;">
+                <div style="position: relative; top: -15px; width: 100%; height: 100%; text-align:center;">
+                    <div id="splash-logo-inner" src="/assets/img/loading-title-100x18.png" style="display: block; margin: 0 auto 5px auto; width: 150px; height: 18px; text-align: center; font: bold 12px 'Helvetica Neue', HelveticaNeue, Helvetica, Arial, sans-serif;">Loading content</div>
+                    <img src="/assets/img/ajax-loader.gif" />
+                </div>
+            </div>
+        </div> -->
+
+        <section class="page page-calendar hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button bordered today month-today month-only capital">
+                        <span>Today</span>
+                    </div>
+
+                    <div class="button bordered today week-today week-only capital">
+                        <span>Today</span>
+                    </div>
+
+                    <button class="navigation navigate-left">
+                        <i class="icon left inline no-selection"></i>
+                    </button>
+
+                    <button class="navigation navigate-right">
+                        <i class="icon right inline no-selection"></i>
+                    </button>
+
+                    <span class="title week-title week-only"></span>
+                    <span class="title month-title month-only"></span>
+
+                    <div class="button right capital button-create-new">
+                        <span>Create new</span>
+                    </div>
+
+                    <ul class="switcher switcher-view">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Week</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Month</span>
+                        </li>
+                    </ul>
+
+                    <ul class="switcher switcher-events-filter">
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Open</span>
+                        </li>
+                        
+                        <li class="ignore-animation">
+                            <span class="apply-animation">With response</span>
+                        </li>
+
+                        <li class="ignore-animation">
+                            <span class="apply-animation">Closed</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="shadow"></div>
+
+                <div class="weekdays">
+                    <ul class="row weekdays-row">
+                        <li>
+                            <span>monday</span>
+                        </li>
+
+                        <li>
+                            <span>tuesday</span>
+                        </li>
+
+                        <li>
+                            <span>wednesday</span>
+                        </li>
+
+                        <li>
+                            <span>thursday</span>
+                        </li>
+
+                        <li>
+                            <span>friday</span>
+                        </li>
+
+                        <li>
+                            <span>saturday</span>
+                        </li>
+
+                        <li>
+                            <span>sunday</span>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <div class="content month-view scrollable hide">
+                <ul class="months-list specific">
+                </ul>
+            </div>
+
+            <div class="content week-view scrollable hide">
+                <ul class="weeks-list specific">
+                </ul>
+            </div>
+        </section>
+
+        <section class="page page-feedback hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Feedback</span>
+
+                    <ul class="switcher switcher-feedback-type">
+                        <li>
+                            <span>Error</span>
+                        </li>
+                        
+                        <li>
+                            <span>Comment</span>
+                        </li>
+
+                        <li>
+                            <span>Suggestion</span>
+                        </li>
+                    </ul>
+
+                    <div class="button right send-button capital">
+                        <span>Send</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <div class="textarea-block">
+                    <div>
+                        <textarea rows="10" placeholder="Leave your feedback here"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-settings hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Settings</span>
+                </div>
+            </header>
+
+            <div class="content general-view hide">
+                <div class="line">
+                    <h2 class="title">Settings</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="selected sections-menu-item sections-menu-item-general">
+                            <span>General</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifications</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Availability</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Time off</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Connections</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>First name</span><em>Explanation 1</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-first_name" type="text" placeholder="First name" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Last name</span><em>Explanation 2</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-last_name" type="text" placeholder="Last name" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Mobile number</span><em>Explanation 3</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-mobile_phone" type="text" placeholder="Mobile number" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>E-mail address</span><em>Explanation 4</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input class="value property-value property-value-email" type="text" placeholder="E-mail address" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content notifications-view hide">
+                <div class="line">
+                    <h2 class="title">Settings</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>General</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-notifications">
+                            <span>Notifications</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Availability</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Time off</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Connections</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable settings-items apply-animation">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications via e-mail</span><em>Explanation 5</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_email">
+                                <li class="option selected">
+                                    <span>Yes</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>No</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications via SMS</span><em>Explanation 6</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-notify_sms">
+                                <li class="option selected">
+                                    <span>Yes</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>No</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Activity report</span><em>Explanation 7</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-activity_digest">
+                                <li class="option selected">
+                                    <span>Yes</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>No</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me confirmation when bidding through SMS</span><em>Explanation 8</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-response_confirmation">
+                                <li class="option selected">
+                                    <span>Yes</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>No</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Send me notifications 24 hour before assigned events starts</span><em>Explanation 9</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_reminders">
+                                <li class="option selected">
+                                    <span>Yes</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>No</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>The number of days inside of which a user will be notified of a new event immediately by text and/or email</span><em>Explanation 10</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <ul class="options-group options-event_urgent_within">
+                                <li class="option selected">
+                                    <span>3d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>7d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>14d</span>
+                                </li>
+
+                                <li class="option">
+                                    <span>&#8734;</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="shadow top apply-animation"></div>
+                <div class="shadow bottom apply-animation"></div>
+            </div>
+
+            <div class="content availability-view hide">
+                <div class="line">
+                    <h2 class="title">Settings</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>General</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifications</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-availability">
+                            <span>Availability</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Time off</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Connections</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 11</h2>
+                    <h3>Explanation 12</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Add new time</span>
+                        </div>
+                    </div>
+
+                    <ul class="columns weekdays-titles">
+                        <li>Monday</li>
+                        <li>Tuesday</li>
+                        <li>Wednesday</li>
+                        <li>Thursday</li>
+                        <li>Friday</li>
+                        <li>Saturday</li>
+                        <li>Sunday</li>
+                    </ul>
+                </div>
+
+                <ul class="scroll-container scrollable elements working-hours apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content timeoff-view hide">
+                <div class="line">
+                    <h2 class="title">Settings</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>General</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifications</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Availability</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-timeoff">
+                            <span>Time off</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-connections">
+                            <span>Connections</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 13</h2>
+                    <h3>Explanation 14</h3>
+                </div>
+
+                <div class="wireframe elements-header apply-animation">
+                    <div class="side-container">
+                        <div class="button button-add-new">
+                            <span>+ Add time off</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="scroll-container scrollable elements inactivities apply-animation">
+
+                </ul>
+
+                <div class="shadow top"></div>
+                <div class="shadow bottom"></div>
+            </div>
+
+            <div class="content connections-view hide">
+                <div class="line">
+                    <h2 class="title">Settings</h2>
+
+                    <div class="placeholder"></div>
+
+                    <ul class="sections-menu">
+                        <li class="sections-menu-item sections-menu-item-general">
+                            <span>General</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-notifications">
+                            <span>Notifications</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-availability">
+                            <span>Availability</span>
+                        </li>
+
+                        <li class="sections-menu-item sections-menu-item-timeoff">
+                            <span>Time off</span>
+                        </li>
+
+                        <li class="selected sections-menu-item sections-menu-item-connections">
+                            <span>Connections</span>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="info apply-animation">
+                    <h2>Explanation 15</h2>
+                    <h3>Explanation 16</h3>
+                </div>
+
+                <ul class="connections-container apply-animation">
+                    <li>
+                        <i class="icon-huge facebook"></i>
+                        <ul class="options-group options-facebook">
+                            <li class="option option-connect selected">
+                                <span>Connect</span>
+                            </li>
+
+                            <li class="option option-disconnect">
+                                <span>Disconnect</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <footer class="general-only notifications-only">
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Save</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-help hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Help</span>
+                </div>
+            </header>
+
+            <div class="content">
+                <iframe></iframe>
+            </div>
+        </section>
+
+        <section class="page page-event-details hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title"></span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+
+                    <br />
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <div class="event-container">
+                </div>
+            </div>
+
+            <footer>
+                <div class="text-container">
+                    <div class="inner-container">
+                        <input class="comment-input" type="text" placeholder="Write a comment here..." />
+                    </div>
+                </div>
+
+                <div class="button-post post-comment">
+                    <span>Post</span>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-notifications hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title">Notifications</span>
+
+                    <div class="button right capital done-button">
+                        <span>X</span>
+                    </div>
+                </div>
+                
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="notifications-list">
+                </ul>
+
+                <div class="button load-more-button">
+                    <span>Load more</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="page page-edit page-edit-working-hours hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Edit working hours</span>
+                    <span class="title edit-single-mode">Edit one-day working hours</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Start time</span><em>Explanation 17</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-start_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>End time</span><em>Explanation 18</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="time" class="property-value property-value-end_time" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Date</span><em>Explanation 19</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Start date</span><em>Explanation 20</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>End date</span><em>Explanation 21</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end_date datepicker" />
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Status</span><em>Explanation 22</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-available">
+                                    <option value="true">Available</option>
+                                    <option value="false">Unavailable</option>
+                                </select>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>Repeat</span><em>Explanation 23</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <select class="property-value property-value-repeat">
+                                <option value="1">Every other week</option>
+                                <option value="2">Every second week</option>
+                                <option value="3">Every third week</option>
+                                <option value="4">Every fourth week</option>
+                            </select>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Save</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Delete</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="page page-edit page-edit-inactivity hide">
+            <header>
+                <div class="line">
+                    <div class="placeholder"></div>
+                    <span class="title edit-mode">Edit inactivity</span>
+                    <span class="title edit-single-mode">Edit one-day inactivity</span>
+
+                    <div class="button capital right button-close">
+                        <span>X</span>
+                    </div>
+                </div>
+
+                <div class="shadow"></div>
+            </header>
+
+            <div class="content scrollable">
+                <ul class="settings-items">
+                    <li class="settings-item">
+                        <div class="header edit-single-mode">
+                            <span class="">Date</span><em>Explanation 24</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="header edit-mode">
+                            <span class="">Start date</span><em>Explanation 25</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-start datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item create-mode edit-mode">
+                        <div class="header">
+                            <span>End date</span><em>Explanation 26</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="date" class="property-value property-value-end datepicker" />
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="settings-item">
+                        <div class="header">
+                            <span>Reason</span><em>Explanation 27</em>
+                            <strong class="badge">changed</strong>
+                        </div>
+
+                        <div class="item-content">
+                            <div class="input-wrapper">
+                                <input type="text" placeholder="Reason" class="property-value property-value-reason" />
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <footer>
+                <div class="line">
+                    <div class="placeholder"></div>
+
+                    <div class="button right button-save capital">
+                        <span>Save</span>
+                    </div>
+
+                    <div class="button warning right button-delete capital">
+                        <span>Delete</span>
+                    </div>
+                </div>
+            </footer>
+        </section>
+
+        <section class="side-bar">
+            <h1 class="title">
+                <img src="/assets/img/global-loader.gif" />
+                <i class="logo title"></i>
+
+                <div class="notifications-indicator-container" style="display: none;">
+                    <div class="notifications-indicator">
+                        
+                    </div>
+                </div>
+            </h1>
+
+            <ul class="menu">
+                <li id="menu-item-calendar" class="menu-item selected">
+                    Calendar
+                </li>
+
+                <li id="menu-item-settings" class="menu-item">
+                    Settings
+                </li>
+
+                <li id="menu-item-feedback" class="menu-item">
+                    Feedback
+                </li>
+
+                <li id="menu-item-help" class="menu-item">
+                    Help
+                </li>
+
+                <li>
+                    <a href="#">Logout</a>
+                </li>
+            </ul>
+        </section>
+
+        <div class="popup-overlay" style="display: none;"></div>
+
+        <div class="popup popup-create-new no-bottom-bar" style="display: none;">
+            <h1 class="create-mode">Choose an option</h1>
+            <div class="close">Close</div>
+
+            <div class="button green-light button-create-time">
+                Create time
+            </div>
+
+            <div class="button green-light button-create-timeoff">
+                Create timeoff
+            </div>
+        </div>
+
+        <div class="popup popup-working-hour" style="display: none;">
+            <h1 class="create-mode">Add new time</h1>
+            <h1 class="edit-mode">Edit time</h1>
+
+            <h1 class="create-single-mode">Add new time for one day</h1>
+            <h1 class="edit-single-mode">Edit time for one day</h1>
+
+            <div class="close">Close</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Time</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <span>from:</span>
+                        <input type="time" class="property-value property-value-start_time" />
+                        <span>to:</span>
+                        <input type="time" class="property-value property-value-end_time" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Date</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>from:</span>
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                        <span>to:</span>
+                        <input type="date" class="property-value property-value-end_date datepicker" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <input type="text" class="property-value property-value-start_date datepicker" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Status</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-available">
+                            <option value="true">Available</option>
+                            <option value="false">Unavailable</option>
+                        </select>
+                    </div>
+                </li>
+                
+                <li class="settings-item create-mode edit-mode">
+                    <div class="header">
+                        <span>Repeat</span>
+                    </div>
+
+                    <div class="item-content two">
+                        <select class="property-value property-value-repeat">
+                            <option value="1">Every other week</option>
+                            <option value="2">Every second week</option>
+                            <option value="3">Every third week</option>
+                            <option value="4">Every fourth week</option>
+                        </select>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Add time
+                </div><div class="button green-light button-add create-single-mode">
+                    + Add time for one day
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Delete
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Save
+                </div>
+            </div>
+        </div>
+
+        <div class="popup popup-timeoff" style="display: none;">
+            <h1 class="create-mode">Add new time off</h1>
+            <h1 class="edit-mode">Edit time off</h1>
+            <h1 class="create-single-mode">Add new day off</h1>
+            <h1 class="edit-single-mode">Edit day off</h1>
+
+            <div class="close">Close</div>
+
+            <ul class="settings-items">
+                <li class="settings-item">
+                    <div class="header">
+                        <span class="create-mode edit-mode">Select start and end dates of vacation period</span>
+                        <span class="create-single-mode edit-single-mode">Select time off day date</span>
+                    </div>
+
+                    <div class="item-content two create-mode edit-mode">
+                        <span>from:</span>
+                        <input type="text" class="datepicker property-value property-value-start" />
+                        <span>to:</span>
+                        <input type="text" class="datepicker property-value property-value-end" />
+                    </div>
+
+                    <div class="item-content create-single-mode edit-single-mode">
+                        <span>date:</span> <input type="text" class="datepicker property-value property-value-start" />
+                    </div>
+                </li>
+
+                <li class="settings-item">
+                    <div class="header">
+                        <span>Enter a reason of inactivity</span>
+                    </div>
+
+                    <div class="item-content">
+                        <input type="text" placeholder="Reason" class="full-width property-value property-value-reason" />
+                    </div>
+                </li>
+            </ul>
+
+            <div class="buttons-container">
+                <div class="button green-light button-add create-mode">
+                    + Add time off
+                </div><div class="button green-light button-add create-single-mode">
+                    + Add day off
+                </div><div class="button warning light button-delete edit-mode edit-single-mode">
+                    Delete
+                </div><div class="button green-light button-save edit-mode edit-single-mode">
+                    Save
+                </div>
+            </div>
+        </div>
+
+        <div id="voice-recognition">
+            <div class="initial">
+                Initializing
+            </div>
+
+            <div class="processing">
+                Speak
+            </div>
+
+            <div class="result">
+            </div>
+
+            <div class="error">
+                Error state
+            </div>
+        </div>
+
+        <div id="fb-root"></div>
+
+        <script>
+            if (typeof window.ovivo === 'undefined') {
+                window.ovivo = {};
+            }
+
+            window.ovivo.dict = {"&#8734;":"&#8734;","Activity report":"Activity report","Add day off":"Add day off","Add new day off":"Add new day off","Add new time":"Add new time","Add new time for one day":"Add new time for one day","Add new time off":"Add new time off","Add time":"Add time","Add time for one day":"Add time for one day","Add time off":"Add time off","Approved":"Approved","April":"April","Assigned":"Assigned","August":"August","Availability":"Availability","Available":"Available","Awaiting reply":"Awaiting reply","Bidding closed":"Bidding closed","Calendar":"Calendar","Choose an option":"Choose an option","Close":"Close","Comment":"Comment","Connect":"Connect","Connected":"Connected","Connections":"Connections","Create new":"Create new","Create time":"Create time","Create timeoff":"Create timeoff","Created by":"Created by","Date":"Date","December":"December","Delete":"Delete","Disconnect":"Disconnect","Disconnected":"Disconnected","E-mail address":"E-mail address","Edit":"Edit","Edit day off":"Edit day off","Edit inactivity":"Edit inactivity","Edit one-day inactivity":"Edit one-day inactivity","Edit one-day working hours":"Edit one-day working hours","Edit time":"Edit time","Edit time for one day":"Edit time for one day","Edit time off":"Edit time off","Edit working hours":"Edit working hours","End date":"End date","End time":"End time","Enter a reason of inactivity":"Enter a reason of inactivity","Error":"Error","Error state":"Error state","Every fourth week":"Every fourth week","Every other week":"Every other week","Every second week":"Every second week","Every third week":"Every third week","Explanation 1":"Explanation 1","Explanation 10":"Explanation 10","Explanation 11":"Explanation 11","Explanation 12":"Explanation 12","Explanation 13":"Explanation 13","Explanation 14":"Explanation 14","Explanation 15":"Explanation 15","Explanation 16":"Explanation 16","Explanation 17":"Explanation 17","Explanation 18":"Explanation 18","Explanation 19":"Explanation 19","Explanation 2":"Explanation 2","Explanation 20":"Explanation 20","Explanation 21":"Explanation 21","Explanation 22":"Explanation 22","Explanation 23":"Explanation 23","Explanation 24":"Explanation 24","Explanation 25":"Explanation 25","Explanation 26":"Explanation 26","Explanation 27":"Explanation 27","Explanation 3":"Explanation 3","Explanation 4":"Explanation 4","Explanation 5":"Explanation 5","Explanation 6":"Explanation 6","Explanation 7":"Explanation 7","Explanation 8":"Explanation 8","Explanation 9":"Explanation 9","February":"February","Feedback":"Feedback","First name":"First name","Friday":"Friday","General":"General","Help":"Help","Initializing":"Initializing","January":"January","July":"July","June":"June","Last name":"Last name","Leave your feedback here":"Leave your feedback here","Load more":"Load more","Loading content":"Loading content","Logout":"Logout","Make a bid":"Make a bid","March":"March","May":"May","Mobile number":"Mobile number","Monday":"Monday","Month":"Month","No":"No","Not approved":"Not approved","Note":"Note","Notifications":"Notifications","November":"November","October":"October","Params are missing":"Params are missing","Pending":"Pending","Post":"Post","Reason":"Reason","Remove":"Remove","Repeat":"Repeat","Saturday":"Saturday","Save":"Save","Select start and end dates of vacation period":"Select start and end dates of vacation period","Select time off day date":"Select time off day date","Send":"Send","Send me confirmation when bidding through SMS":"Send me confirmation when bidding through SMS","Send me notifications 24 hour before assigned events starts":"Send me notifications 24 hour before assigned events starts","Send me notifications via SMS":"Send me notifications via SMS","Send me notifications via e-mail":"Send me notifications via e-mail","September":"September","Settings":"Settings","Speak":"Speak","Start date":"Start date","Start time":"Start time","Status":"Status","Suggestion":"Suggestion","Sunday":"Sunday","Thanks for your feedback":"Thanks for your feedback","The number of days inside of which a user will be notified of a new event immediately by text and/or email":"The number of days inside of which a user will be notified of a new event immediately by text and/or email","Thursday":"Thursday","Time":"Time","Time off":"Time off","Today":"Today","Tuesday":"Tuesday","Unavailable":"Unavailable","Wednesday":"Wednesday","Week":"Week","Write a comment here...":"Write a comment here...","Yes":"Yes","Your bid has been removed":"Your bid has been removed","Your bid has now been received":"Your bid has now been received","a minute ago":"a minute ago","a second ago":"a second ago","an hour ago":"an hour ago","calendar":"calendar","changed":"changed","create":"create","d":"d","date":"date","event":"event","events":"events","feedback":"feedback","few hours ago":"few hours ago","few minutes ago":"few minutes ago","friday":"friday","from":"from","help":"help","hour":"hour","hours":"hours","just now":"just now","monday":"monday","open":"open","saturday":"saturday","settings":"settings","sunday":"sunday","thursday":"thursday","to":"to","tuesday":"tuesday","wednesday":"wednesday"};
+        </script>
+
+        <script>
+            if (typeof window.gettext === 'undefined') {
+                window.gettext = (function () {
+                    return function (msgid) {
+                        if (typeof window.ovivo.dict[msgid] !== 'undefined') {
+                            return window.ovivo.dict[msgid];
+                        }
+
+                        return msgid;
+                    };
+                } ());
+            }
+
+            if (typeof window.ngettext === 'undefined') {
+                window.ngettext = (function () {
+                    return function (singular, plural, num) {
+                        if ((num === 1) || (num % 10 === 1)) {
+                            return (window.ovivo.dict[singular] !== undefined)? window.ovivo.dict[singular]: singular;
+                        } else {
+                            return (window.ovivo.dict[plural] !== undefined)? window.ovivo.dict[plural]: plural;
+                        }
+                    };
+                } ());
+            }
+        </script>
+
+        <script>
+            if (typeof ovivo === 'undefined') { ovivo = {}; }
+
+            ovivo._config = {
+                USER_ID: 6167,
+                TEST_SESSIONID_COOKIE: 'baa939fc103fa3c398e8ad4ff8d4ccb3',
+                SOCKET_IO_CONNECT_URL: 'http://dev.ovivo.dk:8888/',
+                FB_APP_ID: 105427519636767,
+                TIMEZONE_OFFSET: 7200000,
+                PAGE_TRANSITION_ANIMATION: true,
+                LOADER_URL: '/assets/img/ajax-loader.gif',
+                LANG: 'en-GB'
+            };
+        </script>
+
+        <!-- <script src="/lib/require.js" data-main="/src/js/main"></script> -->
+        <script src="/lib/require.js"></script>
+        <script src="/dist/script.js"></script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
+
+        <script>
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "http://dev.ovivo.dk:8888/socket.io/socket.io.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'socket_io'));
+        </script>
+    </body>
+</html>

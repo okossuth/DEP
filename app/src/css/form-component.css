@@ -1,0 +1,28 @@
+.form-component > .settings-items {
+  margin: 20px 0; }
+  .form-component > .settings-items > li.settings-item > div.item-content {
+    text-align: center; }
+    .form-component > .settings-items > li.settings-item > div.item-content > input, .form-component > .settings-items > li.settings-item > div.item-content > select {
+      background: #ebe9e0;
+      color: #525044;
+      font-size: 15px;
+      text-align: center;
+      padding: 9px 9px;
+      -webkit-appearance: none; }
+    .form-component > .settings-items > li.settings-item > div.item-content > input {
+      height: 17px;
+      width: 382px; }
+    .form-component > .settings-items > li.settings-item > div.item-content > select {
+      -webkit-appearance: menulist-button;
+      width: 400px; }
+    .form-component > .settings-items > li.settings-item > div.item-content > select[multiple="multiple"] {
+      -webkit-appearance: initial; }
+    .form-component > .settings-items > li.settings-item > div.item-content > span {
+      font: normal 17px OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+      font-style: italic;
+      color: #807e73;
+      margin: 0 4px;
+      display: inline-block;
+      width: 16px; }
+    .form-component > .settings-items > li.settings-item > div.item-content.two > input {
+      width: 166px; }

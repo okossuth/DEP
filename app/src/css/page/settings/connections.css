@@ -1,0 +1,15 @@
+.page.page-settings .connections-view .connections-container {
+  text-align: center;
+  margin: 20px 0 0 0; }
+  .page.page-settings .connections-view .connections-container > li {
+    display: inline-block;
+    width: 300px;
+    text-align: center; }
+    .page.page-settings .connections-view .connections-container > li > i, .page.page-settings .connections-view .connections-container > li > .options-group {
+      display: inline-block; }
+.page.page-settings .connections-view ul.options-group > li.option {
+  margin: 0 0 0 20px;
+  padding: 8px 10px;
+  width: 100px; }
+  .page.page-settings .connections-view ul.options-group > li.option:first-child {
+    margin-left: 0; }

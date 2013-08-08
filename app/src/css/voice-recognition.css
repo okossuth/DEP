@@ -1,0 +1,33 @@
+#voice-recognition {
+  position: absolute;
+  top: -115px;
+  left: 0;
+  z-index: 10001;
+  width: 100%;
+  height: 95px;
+  background: white;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  -webkit-transition: top 300ms;
+  -moz-transition: top 300ms;
+  -ms-transition: top 300ms;
+  -o-transition: top 300ms;
+  transition: top 300ms; }
+  #voice-recognition.show {
+    top: 0; }
+  #voice-recognition > div {
+    display: none;
+    text-align: center;
+    font-size: 48px;
+    padding: 10px 0; }
+  #voice-recognition.initial > div.initial {
+    display: block; }
+  #voice-recognition.processing > div.processing {
+    display: block; }
+  #voice-recognition.result > div.result {
+    display: block; }
+  #voice-recognition.error > div.error {
+    display: block; }
+  #voice-recognition ul.results > li.success {
+    color: green; }
+  #voice-recognition ul.results > li.error {
+    color: red; }

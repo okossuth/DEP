@@ -1,0 +1,69 @@
+@-webkit-keyframes notifications-enter {
+  from {
+    -webkit-transform: translate(-300px); }
+
+  to {
+    -webkit-transform: translate(0); } }
+
+@-moz-keyframes notifications-enter {
+  from {
+    -moz-transform: translate(-300px); }
+
+  to {
+    -moz-transform: translate(0); } }
+
+@-ms-keyframes notifications-enter {
+  from {
+    -ms-transform: translate(-300px); }
+
+  to {
+    -ms-transform: translate(0); } }
+
+@-o-keyframes notifications-enter {
+  from {
+    -o-transform: translate(-300px); }
+
+  to {
+    -o-transform: translate(0); } }
+
+@keyframes notifications-enter {
+  from {
+    transform: translate(-300px); }
+
+  to {
+    transform: translate(0); } }
+
+@-webkit-keyframes notifications-exit {
+  from {
+    -webkit-transform: translate(0); }
+
+  to {
+    -webkit-transform: translate(-300px); } }
+
+@-moz-keyframes notifications-exit {
+  from {
+    -moz-transform: translate(0); }
+
+  to {
+    -moz-transform: translate(-300px); } }
+
+@-ms-keyframes notifications-exit {
+  from {
+    -ms-transform: translate(0); }
+
+  to {
+    -ms-transform: translate(-300px); } }
+
+@-o-keyframes notifications-exit {
+  from {
+    -o-transform: translate(0); }
+
+  to {
+    -o-transform: translate(-300px); } }
+
+@keyframes notifications-exit {
+  from {
+    transform: translate(0); }
+
+  to {
+    transform: translate(-300px); } }

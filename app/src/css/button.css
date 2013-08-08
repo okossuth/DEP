@@ -1,0 +1,27 @@
+.button {
+  background: #333333;
+  font-size: 13px;
+  font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+  color: white;
+  display: inline-block;
+  border-radius: 1px;
+  padding: 11px 0 11px 0;
+  text-align: center;
+  cursor: pointer; }
+  .button.bordered {
+    background: transparent;
+    padding: 9px 0 9px 0;
+    border: 2px solid #333333;
+    color: #333333; }
+  .button.green-light, .button.light {
+    border-radius: 2px;
+    font-size: 16px; }
+  .button.green-light {
+    background: #444444; }
+  .button.warning {
+    background: #b23333; }
+  .button.disabled {
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+  .button.capital {
+    text-transform: uppercase; }

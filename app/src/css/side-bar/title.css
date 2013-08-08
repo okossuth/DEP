@@ -1,0 +1,35 @@
+body.loading .side-bar > h1.title > img {
+  display: block; }
+
+.side-bar > h1.title {
+  position: relative;
+  margin: 31px auto 0 auto;
+  width: 100px;
+  cursor: pointer; }
+  .side-bar > h1.title > img {
+    position: absolute;
+    left: 120px;
+    top: 4px;
+    z-index: 9000;
+    display: none; }
+  .side-bar > h1.title .notifications-indicator-container {
+    position: absolute;
+    top: 0px;
+    left: 50%; }
+    .side-bar > h1.title .notifications-indicator-container > div {
+      position: absolute;
+      left: 37px;
+      padding: 3px 5px 0 5px;
+      height: 15px;
+      border-radius: 1px;
+      background: white;
+      background: -webkit-linear-gradient(top, white, gainsboro);
+      background: -moz-linear-gradient(top, white, gainsboro);
+      background: -ms-linear-gradient(top, white, gainsboro);
+      background: -o-linear-gradient(top, white, gainsboro);
+      background: linear-gradient(top, white, gainsboro);
+      box-shadow: 0 1px 0 rgba(7, 70, 50, 0.3);
+      text-shadow: 0 1px 0 white;
+      font: normal 11px KontrapunktBobBold, OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+      color: #007550;
+      text-align: center; }

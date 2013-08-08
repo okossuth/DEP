@@ -1,0 +1,9 @@
+.page.page-help .content {
+  overflow: hidden; }
+.page.page-help iframe {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  border: 0;
+  padding: 0;
+  margin: 0; }

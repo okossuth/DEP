@@ -1,0 +1,10 @@
+.side-bar {
+  position: absolute;
+  overflow: visible;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 10000;
+  width: 261px;
+  background: #333333;
+  min-height: 600px; }

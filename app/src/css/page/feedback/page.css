@@ -1,0 +1,18 @@
+.page.page-feedback > header > div.line > ul.switcher {
+  margin: 0 0 0 30px;
+  float: none;
+  position: relative;
+  top: -3px; }
+.page.page-feedback .textarea-block {
+  background: white;
+  box-shadow: 0 1px 2px #cccccc;
+  border-radius: 2px;
+  margin: 10px;
+  border: 1px solid transparent; }
+  .page.page-feedback .textarea-block > div {
+    margin: 10px; }
+  .page.page-feedback .textarea-block textarea {
+    margin: 0;
+    width: 100%;
+    font: normal 17px OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+    color: #8e8e8e; }

@@ -1,0 +1,69 @@
+@-webkit-keyframes empty-enter {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 1; } }
+
+@-moz-keyframes empty-enter {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 1; } }
+
+@-ms-keyframes empty-enter {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 1; } }
+
+@-o-keyframes empty-enter {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 1; } }
+
+@keyframes empty-enter {
+  from {
+    opacity: 1; }
+
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes empty-exit {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0; } }
+
+@-moz-keyframes empty-exit {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0; } }
+
+@-ms-keyframes empty-exit {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0; } }
+
+@-o-keyframes empty-exit {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0; } }
+
+@keyframes empty-exit {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 0; } }

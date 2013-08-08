@@ -1,0 +1,110 @@
+ul.months-list .element.highlight > div.element-container, ul.weeks-list .element.highlight > div.element-container, .page-event-details .element.highlight > div.element-container {
+  background: #dddddd; }
+ul.months-list .element > div.element-container, ul.weeks-list .element > div.element-container, .page-event-details .element > div.element-container {
+  border-radius: 2px;
+  overflow: hidden;
+  -webkit-transition: background 200ms;
+  -moz-transition: background 200ms;
+  -ms-transition: background 200ms;
+  -o-transition: background 200ms;
+  transition: background 200ms;
+  background: white;
+  margin: 10px 8px 0 8px;
+  box-shadow: 0 1px 2px #cccccc, 0 0 0 #999999; }
+  ul.months-list .element > div.element-container.clicked, ul.weeks-list .element > div.element-container.clicked, .page-event-details .element > div.element-container.clicked {
+    box-shadow: 0 1px 2px #cccccc, 0 0 10px #999999; }
+  ul.months-list .element > div.element-container > div.strip, ul.weeks-list .element > div.element-container > div.strip, .page-event-details .element > div.element-container > div.strip {
+    height: 5px;
+    background: red;
+    -webkit-transition: background 300ms;
+    -moz-transition: background 300ms;
+    -ms-transition: background 300ms;
+    -o-transition: background 300ms;
+    transition: background 300ms; }
+  ul.months-list .element > div.element-container .label-open, ul.months-list .element > div.element-container .label-closed, ul.months-list .element > div.element-container .label-open-responses, ul.months-list .element > div.element-container .label-bidding-closed, ul.weeks-list .element > div.element-container .label-open, ul.weeks-list .element > div.element-container .label-closed, ul.weeks-list .element > div.element-container .label-open-responses, ul.weeks-list .element > div.element-container .label-bidding-closed, .page-event-details .element > div.element-container .label-open, .page-event-details .element > div.element-container .label-closed, .page-event-details .element > div.element-container .label-open-responses, .page-event-details .element > div.element-container .label-bidding-closed {
+    display: none; }
+  ul.months-list .element > div.element-container.closed > div.strip, ul.weeks-list .element > div.element-container.closed > div.strip, .page-event-details .element > div.element-container.closed > div.strip {
+    background: #007550; }
+  ul.months-list .element > div.element-container.closed .label-closed, ul.weeks-list .element > div.element-container.closed .label-closed, .page-event-details .element > div.element-container.closed .label-closed {
+    display: block; }
+  ul.months-list .element > div.element-container.open > div.strip, ul.weeks-list .element > div.element-container.open > div.strip, .page-event-details .element > div.element-container.open > div.strip {
+    background: #da4444; }
+  ul.months-list .element > div.element-container.open .label-open, ul.weeks-list .element > div.element-container.open .label-open, .page-event-details .element > div.element-container.open .label-open {
+    display: block; }
+  ul.months-list .element > div.element-container.open-responses > div.strip, ul.weeks-list .element > div.element-container.open-responses > div.strip, .page-event-details .element > div.element-container.open-responses > div.strip {
+    background: #d8da44; }
+  ul.months-list .element > div.element-container.open-responses .label-open-responses, ul.weeks-list .element > div.element-container.open-responses .label-open-responses, .page-event-details .element > div.element-container.open-responses .label-open-responses {
+    display: block; }
+  ul.months-list .element > div.element-container.bidding-closed.label-bidding-closed, ul.weeks-list .element > div.element-container.bidding-closed.label-bidding-closed, .page-event-details .element > div.element-container.bidding-closed.label-bidding-closed {
+    display: block; }
+  ul.months-list .element > div.element-container.available > div.strip, ul.weeks-list .element > div.element-container.available > div.strip, .page-event-details .element > div.element-container.available > div.strip {
+    background: #0066cc; }
+  ul.months-list .element > div.element-container.unavailable > div.strip, ul.weeks-list .element > div.element-container.unavailable > div.strip, .page-event-details .element > div.element-container.unavailable > div.strip {
+    background: #6d0088; }
+  ul.months-list .element > div.element-container > div.info, ul.weeks-list .element > div.element-container > div.info, .page-event-details .element > div.element-container > div.info {
+    padding: 7px 15px; }
+    ul.months-list .element > div.element-container > div.info > h2, ul.months-list .element > div.element-container > div.info > h3, ul.months-list .element > div.element-container > div.info > h4, ul.weeks-list .element > div.element-container > div.info > h2, ul.weeks-list .element > div.element-container > div.info > h3, ul.weeks-list .element > div.element-container > div.info > h4, .page-event-details .element > div.element-container > div.info > h2, .page-event-details .element > div.element-container > div.info > h3, .page-event-details .element > div.element-container > div.info > h4 {
+      display: inline-block;
+      width: 100%; }
+    ul.months-list .element > div.element-container > div.info > h4, ul.weeks-list .element > div.element-container > div.info > h4, .page-event-details .element > div.element-container > div.info > h4 {
+      margin-top: 5px;
+      font-size: 11px;
+      color: #666666;
+      font-weight: normal; }
+    ul.months-list .element > div.element-container > div.info > h3, ul.months-list .element > div.element-container > div.info > h2, ul.weeks-list .element > div.element-container > div.info > h3, ul.weeks-list .element > div.element-container > div.info > h2, .page-event-details .element > div.element-container > div.info > h3, .page-event-details .element > div.element-container > div.info > h2 {
+      font-size: 15px; }
+    ul.months-list .element > div.element-container > div.info > h3, ul.weeks-list .element > div.element-container > div.info > h3, .page-event-details .element > div.element-container > div.info > h3 {
+      font-weight: normal;
+      margin: 1px 0 0 0; }
+    ul.months-list .element > div.element-container > div.info > h2, ul.weeks-list .element > div.element-container > div.info > h2, .page-event-details .element > div.element-container > div.info > h2 {
+      font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+      font-weight: normal; }
+      ul.months-list .element > div.element-container > div.info > h2 > em, ul.weeks-list .element > div.element-container > div.info > h2 > em, .page-event-details .element > div.element-container > div.info > h2 > em {
+        font-family: OvivoHelveticaNeue, "Helvetica Neue", "HelveticaNeue", sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        color: #666666; }
+  ul.months-list .element > div.element-container > div.buttons, ul.weeks-list .element > div.element-container > div.buttons, .page-event-details .element > div.element-container > div.buttons {
+    background: #f0efec;
+    box-shadow: inset 0 1px 0 #f6f5f4;
+    overflow: hidden;
+    border-radius: 0 0 2px 2px;
+    height: 41px;
+    cursor: pointer;
+    border-top: 1px solid #cccccc; }
+    ul.months-list .element > div.element-container > div.buttons > div.button-element, ul.weeks-list .element > div.element-container > div.buttons > div.button-element, .page-event-details .element > div.element-container > div.buttons > div.button-element {
+      position: relative;
+      float: left;
+      width: 50%;
+      padding: 9px 0;
+      overflow: hidden; }
+      ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-background, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-background, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-background {
+        position: absolute;
+        top: 1px;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 0; }
+        ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-background > div, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-background > div, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-background > div {
+          width: 100%;
+          height: 100%;
+          background: -webkit-linear-gradient(top, #f0efec, rgba(240, 239, 236, 0)); }
+      ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-inner, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-inner, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-inner {
+        position: relative;
+        z-index: 1;
+        height: 23px;
+        line-height: 19px;
+        text-align: center; }
+        ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > *, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > *, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-inner > * {
+          vertical-align: middle; }
+        ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > span, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > span, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-inner > span {
+          font-family: OvivoHelveticaNeueBold, "Helvetica Neue Bold", "HelveticaNeue-Bold", sans-serif;
+          font-weight: normal;
+          font-size: 13px;
+          color: #807e73; }
+        ul.months-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > i, ul.weeks-list .element > div.element-container > div.buttons > div.button-element > div.button-inner > i, .page-event-details .element > div.element-container > div.buttons > div.button-element > div.button-inner > i {
+          margin-right: 5px; }
+      ul.months-list .element > div.element-container > div.buttons > div.button-element.left > div.button-background, ul.weeks-list .element > div.element-container > div.buttons > div.button-element.left > div.button-background, .page-event-details .element > div.element-container > div.buttons > div.button-element.left > div.button-background {
+        box-shadow: inset -1px 0 0 #cccccc; }
+      ul.months-list .element > div.element-container > div.buttons > div.button-element.right > div.button-background, ul.weeks-list .element > div.element-container > div.buttons > div.button-element.right > div.button-background, .page-event-details .element > div.element-container > div.buttons > div.button-element.right > div.button-background {
+        box-shadow: inset 1px 0 0 #f6f5f4; }

@@ -1,0 +1,46 @@
+i.logo {
+  display: block;
+  width: 100px;
+  height: 40px;
+  background: url("../assets/img/sprite.png") no-repeat;
+  background-size: 254px 250px; }
+  i.logo.inline {
+    display: inline-block; }
+  i.logo.title {
+    background-position: 0 0px; }
+
+i.icon {
+  display: block;
+  width: 29px;
+  height: 29px;
+  background: url("../assets/img/sprite.png") no-repeat;
+  background-size: 254px 250px; }
+  i.icon.inline {
+    display: inline-block; }
+  i.icon.left {
+    background-position: -100px 0px; }
+  i.icon.right {
+    background-position: -100px -29px; }
+  i.icon.month {
+    background-position: -100px -58px; }
+  i.icon.week {
+    background-position: -100px -87px; }
+  i.icon.checked {
+    background-position: -100px -116px; }
+  i.icon.unchecked {
+    background-position: -100px -145px; }
+  i.icon.wait {
+    background-position: -100px -174px; }
+
+i.icon-huge {
+  display: block;
+  width: 125px;
+  height: 125px;
+  background: url("../assets/img/sprite.png") no-repeat;
+  background-size: 254px 250px; }
+  i.icon-huge.inline {
+    display: inline-block; }
+  i.icon-huge.ok {
+    background-position: -129px 0px; }
+  i.icon-huge.facebook {
+    background-position: -129px -125px; }

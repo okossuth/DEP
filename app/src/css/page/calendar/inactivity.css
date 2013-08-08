@@ -1,0 +1,31 @@
+ul.months-list .row > td:first-child li.inactivity > span, ul.weeks-list .row > td:first-child li.inactivity > span {
+  visibility: visible; }
+ul.months-list li.inactivity, ul.weeks-list li.inactivity {
+  width: 100%;
+  padding: 5px 8px;
+  position: relative;
+  left: -8px;
+  background: black;
+  margin: 2px 0 0 0;
+  cursor: pointer; }
+  ul.months-list li.inactivity:first-child, ul.weeks-list li.inactivity:first-child {
+    margin-top: 0; }
+  ul.months-list li.inactivity.first, ul.weeks-list li.inactivity.first {
+    padding: 5px 10px 5px 8px; }
+    ul.months-list li.inactivity.first > span, ul.weeks-list li.inactivity.first > span {
+      visibility: visible; }
+  ul.months-list li.inactivity.last, ul.weeks-list li.inactivity.last {
+    padding: 5px 8px 5px 10px;
+    left: -10px; }
+    ul.months-list li.inactivity.last.first, ul.weeks-list li.inactivity.last.first {
+      padding: 5px 8px 5px 8px;
+      left: -8px; }
+  ul.months-list li.inactivity.none, ul.weeks-list li.inactivity.none {
+    padding: 5px 10px;
+    left: -10px; }
+  ul.months-list li.inactivity > span, ul.weeks-list li.inactivity > span {
+    visibility: hidden;
+    color: white;
+    height: 13px;
+    width: 100%;
+    display: block; }
